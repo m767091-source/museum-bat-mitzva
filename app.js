@@ -20,7 +20,8 @@ const profileCard=i=>`<div class="profile-card"><div class="eyebrow">תיק חו
 const steps=[{kind:'lobby'},{kind:'intro'},...people.flatMap((p,i)=>[{kind:'door',i},{kind:'media',i},{kind:'task',i},{kind:'value',i},{kind:'letter',i}]),{kind:'vault'},{kind:'wall'},{kind:'end'}];
 const online=location.protocol==='http:'||location.protocol==='https:';
 const initial=()=>({step:0,created:Date.now(),participants:{},responses:{},vaultOpen:false});
-let room=new URLSearchParams(location.search).get('room')||sessionStorage.getItem('museum_room')||'', role=new URLSearchParams(location.search).get('role')||'',uid=sessionStorage.getItem('museum_uid')||'',state=null,unsub=null,feedback='',lastStep=-1,hostSecret='',playerSecret='',socket=null,reconnectTimer=null;
+if(new URLSearchParams(location.search).has('new')){sessionStorage.removeItem('museum_room');sessionStorage.removeItem('museum_uid');}
+let room=new URLSearchParams(location.search).has('new')?'':(new URLSearchParams(location.search).get('room')||sessionStorage.getItem('museum_room')||''), role=new URLSearchParams(location.search).get('role')||'',uid=sessionStorage.getItem('museum_uid')||'',state=null,unsub=null,feedback='',lastStep=-1,hostSecret='',playerSecret='',socket=null,reconnectTimer=null;
 const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const link=()=>new URL(location.pathname+'?role=player&room='+room,location.href).href;
 const getStage=()=>steps[Math.max(0,Math.min(steps.length-1,Number(state?.step)||0))];
