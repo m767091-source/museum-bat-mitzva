@@ -20,10 +20,10 @@ test('Golda: six distinct events in historically correct positions', () => {
   assert.equal(goldaEvents.length, 6);
   assert.equal(new Set(goldaOrder).size, 6);
   assert.deepEqual(Array.from(goldaOrder), [4,1,6,2,5,3]);
-  const years = [1948,1898,1969,1906,1956,1921];
+  const years = [1948,1898,1969,null,1956,1921];
   const chronological = years.map((year, i) => ({year, pos: goldaOrder[i]}))
     .sort((a,b) => a.pos - b.pos).map(x => x.year);
-  assert.deepEqual(chronological, [1898,1906,1921,1948,1956,1969]);
+  assert.deepEqual(chronological, [1898,null,1921,1948,1956,1969]);
 });
 test('Hannah: five girls plus a sixth facilitator letter spell אמיצות', () => {
   assert.equal(encrypted.length, 6);
