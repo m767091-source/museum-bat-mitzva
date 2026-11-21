@@ -44,7 +44,7 @@ const encrypted=['ת','י','מ','ה','פ','א'];
 const decoded=['א','מ','י','צ','ו','ת'];
 const assignment=(person,i)=>{let peers=group(person.team).sort((a,b)=>a.joined-b.joined);let k=peers.findIndex(x=>x.id===person.id);return Math.max(0,k)%6};
 const respFor=(i,id)=>state?.responses?.[i]?.[id]||{};
-const completed=(i,person)=>{let r=respFor(i,person.id);if(i===0)return r.sequence===goldaOrder[assignment(person,0)];if(i===1)return r.contribution==='done' && r.choice===1;if(i===2)return String(r.decrypt||'').trim().replace(/[׳'״"\u200e\u200f]/g,'')===decoded[assignment(person,2)];if(i===3)return !!r.question?.trim() && r.choice===1;if(i===4)return !!r.word?.trim();return false};
+const completed=(i,person)=>{let r=respFor(i,person.id);if(i===0)return r.sequence===goldaOrder[assignment(person,0)];if(i===1)return r.contribution==='done' && r.choice===1;if(i===2){const typed=String(r.decrypt||'').normalize('NFKC').trim().replace(/[׳'״"\u200e\u200f\u200c\u200d\s]/g,'');const shown=encrypted[assignment(person,2)];const answer=decoded[encrypted.indexOf(shown)];return typed===answer;}if(i===3)return !!r.question?.trim() && r.choice===1;if(i===4)return !!r.word?.trim();return false};
 const teamProgress=(i,n)=>{let peopleIn=group(n);return {total:peopleIn.length,done:peopleIn.filter(person=>completed(i,person)).length}};
 const allTeamsDone=(i)=>labels.every((_,n)=>{let t=teamProgress(i,n+1);return t.total===0||t.done===t.total});
 
