@@ -61,11 +61,15 @@ function connect(){
  socket=new WebSocket(url);
  socket.onopen=()=>{document.body.classList.remove('museum-disconnected');let banner=document.querySelector('#museumConnection');if(banner)banner.textContent='';};
  socket.onmessage=evt=>{let data=JSON.parse(evt.data);if(data.type==='state'){state=data.state;render()}};
- socket.onclose=()=>{
+ socket.onclose=evt=>{
    document.body.classList.add('museum-disconnected');
-   let banner=document.querySelector('#museumConnection');if(banner)banner.textContent='החיבור נותק זמנית. מנסות להתחבר מחדש…';
+   let banner=document.querySelector('#museumConnection');
+   if(!state){
+     if(banner)banner.textContent='';
+     app.innerHTML=header()+`<section class="wrap"><div class="card"><h2>לא הצלחנו להתחבר לחדר ${escape(room)}</h2><p>ייתכן שהחדר נסגר לאחר עדכון השרת. אם המנחה עדיין רואה את החדר במחשב, נסו לרענן את שני המכשירים. אם גם במחשב החדר אינו קיים, יש לפתוח חדר חדש.</p><p>המשחק עצמו זמין, אבל חדר קודם לא תמיד נשמר לאחר פריסה חדשה.</p><a class="btn" href="./?new=1">חזרה למסך הראשי</a></div></section>`;
+   }else if(banner)banner.textContent='החיבור נותק זמנית. מנסות להתחבר מחדש…';
    if(reconnectTimer)clearTimeout(reconnectTimer);
-   reconnectTimer=setTimeout(()=>{if(room && (!socket||socket.readyState!==WebSocket.OPEN))connect()},2200);
+   reconnectTimer=setTimeout(()=>{if(room && (!socket||socket.readyState!==WebSocket.OPEN))connect()},3500);
  };
  socket.onerror=()=>{};
 }
