@@ -200,3 +200,20 @@ body{background:#070d15;color:var(--museum-ivory)}
 .option.selected{background:#2b6c69;box-shadow:inset 0 0 0 2px #e9c78c}
 @media(max-width:700px){#app{padding:10px}.brand{padding:12px}.hero{min-height:74vh;border-width:5px;border-radius:40% 40% 16px 16px/7% 7% 16px 16px;padding:35px 12px}.hero h1{font-size:clamp(45px,12vw,73px)}.hero .btn{width:min(95%,350px)}.presentation>.intro:not(.cinematic-room):not(.cinematic-media):not(.cinematic-task),.presentation>.card{min-height:490px;border-width:4px;padding:30px 14px}.cinematic-room,.cinematic-media,.cinematic-task{border-width:4px}.hostcontrols{position:relative}.hero:before{background-position:53% center}}
 @media(prefers-reduced-motion:reduce){.hero .btn{transition:none}.hero .btn:hover{transform:none}}
+
+
+/* VISIBILITY FIX: bright museum artwork, readable foreground */
+body{background:#152735}
+#app:before{opacity:.12}
+.hero{background:#223949;box-shadow:0 25px 65px #0008,inset 0 0 0 3px #f4d8a755}
+.hero:before{filter:saturate(1.12) brightness(1.28);opacity:1}
+.hero:after{background:linear-gradient(180deg,#06121d3b 0%,#06121d35 40%,#07131d76 78%,#07131da8 100%)}
+.hero h1,.hero p,.hero .eyebrow{text-shadow:0 3px 13px #06111de0,0 0 18px #06111db8}
+.presentation>.intro:not(.cinematic-room):not(.cinematic-media):not(.cinematic-task):before,.presentation>.card:before{opacity:.95;filter:brightness(1.2) saturate(1.08)}
+.presentation>.intro:not(.cinematic-room):not(.cinematic-media):not(.cinematic-task):after,.presentation>.card:after{background:linear-gradient(180deg,#07101b36,#07101b55 55%,#07101b9e)}
+.cinematic-room,.cinematic-media,.cinematic-task{background-color:#203c49}
+.cinematic-room>.cinematic-scene,.cinematic-media>.cinematic-scene,.cinematic-task>.cinematic-scene{filter:brightness(1.22) saturate(1.08)}
+.cinematic-media>.card,.cinematic-task>.card{background:linear-gradient(135deg,#132c39d9,#244550dc)}
+.student-task{background:linear-gradient(145deg,#274454,#142b3b)}
+.student-task>.cinematic-scene{filter:brightness(1.14)}
+@media(max-width:700px){.hero:before{filter:saturate(1.13) brightness(1.34)}}
