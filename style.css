@@ -20,3 +20,23 @@ body{background:radial-gradient(ellipse at 12% 15%,#183c47 0%,transparent 34%),r
 .secret-hint{margin:18px auto;max-width:680px;padding:15px;background:rgba(4,17,28,.6);border:1px dashed #b8a36c;border-radius:12px;text-align:right}
 .secret-hint summary{cursor:pointer;color:#e6c98b;font-weight:bold}
 .secret-hint p{font-size:1.15rem;line-height:1.7}
+
+/* Cinematic escape room enhancement: shared host scenes and personal introduction cards */
+body{background:radial-gradient(ellipse at 50% 0%,#263747 0%,#07111b 55%,#04080f 100%);}
+.hero{position:relative;isolation:isolate;background:linear-gradient(180deg,#09172388,#07111bd9),radial-gradient(ellipse at 50% 50%,#b38d4855,transparent 65%);border:1px solid #a78a5455;border-radius:25px;box-shadow:0 25px 90px #0007;}
+.cinematic-room{position:relative;overflow:hidden;isolation:isolate;min-height:min(70vh,650px);display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px solid #c7a36e;border-radius:22px;box-shadow:0 15px 75px #000b,inset 0 0 45px #000;}
+.cinematic-room:after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,#06111df2 2%,#06111d66 60%,#06111d66 100%);pointer-events:none;}
+.cinematic-room .cinematic-scene{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;animation:scene-reveal 1.5s ease-out both;}
+.cinematic-room h2,.cinematic-room .huge,.cinematic-room p,.cinematic-room .eyebrow,.cinematic-room .door-seal{text-shadow:0 4px 20px #000,0 0 28px #000;position:relative;}
+.cinematic-media .cinematic-scene,.cinematic-task .cinematic-scene{display:block;width:min(800px,95%);max-height:320px;object-fit:cover;object-position:center;border:3px solid #c7a36e;border-radius:18px;margin:0 auto 24px;box-shadow:0 20px 60px #0009;}
+.cinematic-media .video{max-height:46vh;object-fit:contain;}
+.mobile-room .cinematic-scene{width:100%;max-height:210px;object-fit:cover;border-radius:12px;margin-bottom:20px;}
+.profile-card{padding:24px 22px;margin:16px auto;max-width:600px;background:linear-gradient(145deg,#203849,#0d1d2d 80%);border:2px solid #d0ae73;border-radius:24px;box-shadow:0 20px 50px #0007;text-align:center;animation:scene-reveal .8s ease both;}
+.profile-card .profile-icon{font-size:46px;margin:10px 0;filter:drop-shadow(0 0 16px #d5b476);}
+.profile-card h2{font-size:clamp(22px,5vw,34px);margin:10px 0;color:#ffe6b2;}
+.profile-card p{font-size:clamp(17px,3vw,21px);line-height:1.85;text-align:right;}
+.profile-think{padding:15px;border-radius:12px;border:1px solid #d0ae7388;background:#b38d4820;color:#ffe7b4;font-weight:700;line-height:1.65;}
+.mobile-instruction{max-width:600px;margin:16px auto;text-align:center;}
+@keyframes scene-reveal{from{opacity:0;transform:scale(1.06)}to{opacity:1;transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){.cinematic-room .cinematic-scene,.profile-card{animation:none;}}
+@media(max-width:650px){.cinematic-room{min-height:420px}.cinematic-media .cinematic-scene,.cinematic-task .cinematic-scene{max-height:210px}.profile-card{padding:17px}}
