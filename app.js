@@ -39,7 +39,7 @@ const goldaEvents=[
  '1956 — התמנתה לשרת החוץ',
  '1921 — עלתה לארץ והתיישבה במרחביה'
 ];
-const goldaOrder=[5,1,6,2,4,3];
+const goldaOrder=[4,1,6,2,5,3];
 const encrypted=['ת','י','מ','ה','פ','א'];
 const decoded=['א','מ','י','צ','ו','ת'];
 const assignment=(person,i)=>{let peers=group(person.team).sort((a,b)=>a.joined-b.joined);let k=peers.findIndex(x=>x.id===person.id);return Math.max(0,k)%6};
