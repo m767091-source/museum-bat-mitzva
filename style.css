@@ -259,3 +259,24 @@ body{background:radial-gradient(ellipse 80% 52% at 50% -15%,#365f68 0%,transpare
 .hostcontrols .btn{box-shadow:none}
 @media(max-width:700px){#app{padding:12px}.hero{padding:65px 16px 55px;border-radius:22px}.hero:after{inset:9px}.card{padding:19px;border-radius:18px}.playerhead{padding-top:17px}.btn{min-height:48px}.presentation .cinematic-scene{border-radius:18px}}
 @media(prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover:not(:disabled),.btn:active:not(:disabled){transform:none}}
+
+
+/* Individual gallery atmospheres — immersive illustrated lighting */
+.presentation:has(.golda-scene),.wrap:has(.student-task.golda-scene){--gallery-accent:#f1c985;--gallery-glow:#ba8b42}
+.presentation:has(.linoy-scene),.wrap:has(.student-task.linoy-scene){--gallery-accent:#b4dfe9;--gallery-glow:#4b91aa}
+.presentation:has(.hannah-scene),.wrap:has(.student-task.hannah-scene){--gallery-accent:#f1b78e;--gallery-glow:#b45e47}
+.presentation:has(.ada-scene),.wrap:has(.student-task.ada-scene){--gallery-accent:#b9e4ce;--gallery-glow:#4eaa8b}
+.presentation:has(.naomi-scene),.wrap:has(.student-task.naomi-scene){--gallery-accent:#e4c4e9;--gallery-glow:#a577af}
+.presentation:has(.cinematic-scene){background:radial-gradient(ellipse 80% 40% at 50% 15%,color-mix(in srgb,var(--gallery-glow,#bca16b) 20%,transparent),transparent 78%);border-radius:30px}
+.presentation:has(.cinematic-scene) .eyebrow,.wrap:has(.student-task) .eyebrow{color:var(--gallery-accent,#f2d392)}
+.presentation .cinematic-scene{position:relative}
+.presentation .cinematic-scene:before{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;background:linear-gradient(90deg,#020c14a8,transparent 23%,transparent 77%,#020c14a8),linear-gradient(0deg,#020c14a6,transparent 30%);border-radius:inherit}
+.presentation .cinematic-scene:after{content:"✦";position:absolute;top:18px;left:24px;z-index:2;font-size:24px;color:var(--gallery-accent,#e8c888);text-shadow:0 0 22px currentColor;pointer-events:none}
+.student-task.golda-scene{background:radial-gradient(ellipse at 100% 0%,#a880383f,transparent 60%),linear-gradient(145deg,#273f4a,#0c2130)}
+.student-task.linoy-scene{background:radial-gradient(ellipse at 100% 0%,#3c8eaf42,transparent 60%),linear-gradient(145deg,#244353,#0b2232)}
+.student-task.hannah-scene{background:radial-gradient(ellipse at 100% 0%,#b45e473c,transparent 60%),linear-gradient(145deg,#443a3a,#14202c)}
+.student-task.ada-scene{background:radial-gradient(ellipse at 100% 0%,#4eaa8b36,transparent 60%),linear-gradient(145deg,#264b4a,#0c2630)}
+.student-task.naomi-scene{background:radial-gradient(ellipse at 100% 0%,#a577af3b,transparent 60%),linear-gradient(145deg,#3a354f,#162135)}
+.student-task .treasure-clue{background:linear-gradient(130deg,#fff4d9,#ead2a0);color:#342615;border:2px solid #d4a859;box-shadow:inset 0 0 0 5px #fff6e87a,0 14px 30px #0004}
+.student-task .btn{border-radius:12px}
+@media(max-width:700px){.presentation:has(.cinematic-scene){border-radius:18px}.presentation .cinematic-scene:after{top:10px;left:12px;font-size:18px}}
