@@ -10,7 +10,7 @@ rooms = {}
 clients = {}
 lock = asyncio.Lock()
 MAX_PLAYERS=36
-TEAM_LIMITS={1:5,2:5,3:5,4:5,5:5,6:5,7:6}
+MAX_TEAM=6
 
 
 def save():
@@ -55,7 +55,7 @@ async def join(req):
         r=rooms.get(code)
         if not r:return error('החדר אינו קיים',404)
         if len(r['participants'])>=MAX_PLAYERS:return error('החדר מלא',409)
-        if sum(int(v['team'])==team for v in r['participants'].values())>=TEAM_LIMITS[team]:return error('הקבוצה מלאה. בחרי קבוצה אחרת.',409)
+        if sum(int(v['team'])==team for v in r['participants'].values())>=MAX_TEAM:return error('הקבוצה מלאה. בחרי קבוצה אחרת.',409)
         uid='p'+secrets.token_hex(9)
         secret=secrets.token_urlsafe(24)
         r['participants'][uid]={'name':name,'team':team,'joined':int(time.time())}
@@ -113,32 +113,6 @@ async def websocket(req):
     finally: clients[code].discard(ws)
     return ws
 
-async def backup(req):
-    code=req.query.get('room','')
-    secret=req.headers.get('X-Host-Secret','')
-    async with lock:
-        r=rooms.get(code)
-        if not r or not secrets.compare_digest(secret,r['secret']):
-            return error('אין הרשאת מנחה',403)
-        payload={'format':'museum-backup-v1','room':code,'data':r}
-        return web.json_response(payload,headers={'Content-Disposition':f'attachment; filename="museum-{code}-backup.json"','Cache-Control':'no-store'})
-
-async def restore(req):
-    try: payload=await req.json()
-    except: return error('קובץ גיבוי לא תקין')
-    if payload.get('format')!='museum-backup-v1' or not isinstance(payload.get('data'),dict):return error('מבנה גיבוי לא תקין')
-    code=str(payload.get('room',''))
-    r=payload['data']
-    if not re.fullmatch(r'[0-9]{4}',code) or not isinstance(r.get('participants'),dict) or not isinstance(r.get('playerSecrets'),dict) or not isinstance(r.get('secret'),str) or not isinstance(r.get('responses'),dict):return error('נתוני גיבוי לא תקינים')
-    if len(r['participants'])>MAX_PLAYERS or not isinstance(r.get('step'),int) or not 0<=r['step']<=29:return error('גיבוי חורג ממגבלות המשחק')
-    for n in range(1,8):
-        if sum(v.get('team')==n for v in r['participants'].values() if isinstance(v,dict))>TEAM_LIMITS[n]:return error('חלוקת קבוצות שגויה')
-    async with lock:
-        if code in rooms:return error('קוד החדר כבר פעיל; לא שוחזר דבר',409)
-        rooms[code]=r
-        save()
-    return web.json_response({'room':code,'secret':r['secret'],'restored':True})
-
 async def health(req):
     return web.json_response({'ok':True,'rooms':len(rooms)})
 
@@ -154,11 +128,10 @@ app.router.add_post('/api/create',create)
 app.router.add_post('/api/join',join)
 app.router.add_post('/api/patch',patch)
 app.router.add_get('/api/health',health)
-app.router.add_get('/api/backup',backup)
-app.router.add_post('/api/restore',restore)
 app.router.add_get('/ws',websocket)
 app.router.add_get('/',lambda req:web.FileResponse(ROOT/'index.html'))
 app.router.add_get('/app.js',lambda req:web.FileResponse(ROOT/'app.js'))
 app.router.add_get('/style.css',lambda req:web.FileResponse(ROOT/'style.css'))
 app.router.add_static('/videos',ROOT/'videos',show_index=False)
+app.router.add_static('/scenes',ROOT/'scenes',show_index=False)
 if __name__=='__main__':web.run_app(app,host='0.0.0.0',port=int(os.getenv('PORT','8080')))
