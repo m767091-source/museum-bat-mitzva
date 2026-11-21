@@ -40,3 +40,124 @@ body{background:radial-gradient(ellipse at 50% 0%,#263747 0%,#07111b 55%,#04080f
 @keyframes scene-reveal{from{opacity:0;transform:scale(1.06)}to{opacity:1;transform:scale(1)}}
 @media(prefers-reduced-motion:reduce){.cinematic-room .cinematic-scene,.profile-card{animation:none;}}
 @media(max-width:650px){.cinematic-room{min-height:420px}.cinematic-media .cinematic-scene,.cinematic-task .cinematic-scene{max-height:210px}.profile-card{padding:17px}}
+
+
+/* Gallery edition: room art fills the architecture, with readable exhibit overlays */
+:root{--gold:#efd5a0;--cream:#fff9ef}
+#app{max-width:1550px;padding:clamp(12px,2vw,28px)}
+.presentation{min-height:65vh}
+.intro{max-width:1150px}
+.intro h2{font-family:Heebo,Arial,sans-serif;font-size:clamp(27px,4vw,58px);line-height:1.22;overflow-wrap:anywhere;max-width:100%;margin:14px auto}
+.cinematic-room{width:min(100%,1250px);max-width:none;min-height:clamp(510px,69vh,760px);border:9px ridge #b58e54;border-radius:44% 44% 20px 20px/11% 11% 20px 20px;padding:clamp(25px,5vw,65px);background:#131e2b;box-shadow:0 0 0 4px #221b17,0 28px 85px #000b,inset 0 0 90px #0009}
+.cinematic-room .cinematic-scene{object-fit:cover;object-position:center;filter:saturate(1.15)}
+.cinematic-room:after{background:linear-gradient(180deg,#080f1c77 0%,#080f1c25 28%,#07111dd9 69%,#050b13f5 100%)}
+.cinematic-room .eyebrow{font-size:clamp(13px,1.6vw,21px);color:#ffe4b1;letter-spacing:1px}
+.cinematic-room h2{color:#fff6e3;font-size:clamp(32px,5vw,70px);margin:10px auto 0;line-height:1.12}
+.cinematic-room .huge{font-size:clamp(49px,7vw,100px);color:#f7d899;line-height:1.1;margin:6px auto}
+.cinematic-room p{font-size:clamp(19px,2.2vw,30px);font-weight:700;max-width:760px;line-height:1.4}
+.cinematic-room .ornament{font-size:clamp(40px,6vw,75px);margin:0;filter:drop-shadow(0 6px 9px #000)}
+.cinematic-room .door-seal{background:#0a1526d9;border:1px solid #ebcb8a;color:#ffe7bb;font-size:clamp(14px,1.5vw,19px);padding:11px 24px;max-width:95%}
+.cinematic-media,.cinematic-task{max-width:1150px;position:relative;padding:clamp(15px,2vw,30px);border:2px solid #d2af74;border-radius:24px;background:linear-gradient(#08121ac9,#0b1c2bea);box-shadow:0 18px 55px #0008}
+.cinematic-media .cinematic-scene,.cinematic-task .cinematic-scene{width:100%;max-width:100%;height:clamp(190px,28vh,320px);max-height:none;object-fit:cover;object-position:center 48%;border:5px ridge #b89a69;border-radius:14px;margin:0 auto 18px}
+.cinematic-media h2{font-size:clamp(25px,3.6vw,50px);max-width:100%;line-height:1.25}
+.cinematic-task h2{font-size:clamp(23px,3vw,40px);max-width:100%;line-height:1.4}
+.cinematic-media .card{margin:14px auto;padding:clamp(14px,2vw,24px);max-width:930px;background:linear-gradient(130deg,#182e39,#0c1925);border:1px solid #b99a66}
+.cinematic-media .video{max-height:min(50vh,540px);width:100%;height:auto;object-fit:contain;background:#050b10}
+.cinematic-task .grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+.cinematic-task .tile{font-size:clamp(15px,1.5vw,20px);line-height:1.6;border:1px solid #d2b681;padding:18px;background:linear-gradient(145deg,#2d414a,#152a36)}
+.cinematic-task .card{background:linear-gradient(130deg,#18303a,#0a202e);border-color:#b99a66;text-align:right}
+.cinematic-task .card h3{color:#f9dfaa}
+.hostcontrols{backdrop-filter:blur(16px);background:#091824f0;border:1px solid #bba16e;box-shadow:0 -10px 30px #0008}
+@media(max-width:750px){.cinematic-room{min-height:480px;padding:22px 14px;border-width:5px}.cinematic-media,.cinematic-task{padding:12px}.cinematic-media .cinematic-scene,.cinematic-task .cinematic-scene{height:190px}.cinematic-room .huge{font-size:clamp(42px,10vw,66px)}.cinematic-room h2{font-size:clamp(28px,8vw,48px)}.cinematic-room p{font-size:18px}.hostcontrols{position:relative}.intro{margin:18px auto}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* Cinematic photorealistic Golda hall — preserves existing tasks and slides */
+.cinematic-room.golda-scene{background-image:linear-gradient(180deg,rgba(5,12,18,.12) 0%,rgba(5,12,18,.05) 43%,rgba(5,12,18,.92) 100%),url('scenes/golda_museum.png');background-position:center;background-size:cover}
+.cinematic-room.golda-scene>.cinematic-scene{display:none}
+.cinematic-media:has(+ .unused){}
+@media(max-width:700px){.cinematic-room.golda-scene{background-position:50% center}}
+
+/* Five cinematic galleries — 21 Nov 2026 */
+.cinematic-room{width:min(1180px,100%);max-width:1180px;min-height:min(75vh,750px);border:7px ridge #d9b77a;border-radius:18px 18px 42px 42px;background:#20170e;box-shadow:0 30px 95px #000b,inset 0 0 0 3px #3c2712}
+.cinematic-room.golda-scene{background-image:none}
+.cinematic-room.golda-scene>.cinematic-scene{display:block}
+.cinematic-room>.cinematic-scene{object-fit:cover;object-position:center}
+.cinematic-room:after{background:linear-gradient(180deg,#05091135 0%,#070b1240 36%,#080b13e8 78%,#070910fa 100%)}
+.cinematic-room h2{font-family:Heebo,Arial,sans-serif;font-size:clamp(29px,4.3vw,62px);overflow-wrap:anywhere}
+.cinematic-room .huge{font-size:clamp(42px,6vw,86px)}
+.cinematic-media,.cinematic-task{max-width:1080px;width:100%;margin:10px auto;overflow-wrap:anywhere}
+.cinematic-media h2,.cinematic-task h2{font-size:clamp(25px,3.6vw,52px);line-height:1.3;max-width:100%;overflow-wrap:anywhere}
+.cinematic-media .cinematic-scene,.cinematic-task .cinematic-scene{height:clamp(180px,29vh,320px);object-position:center}
+.cinematic-media .card{max-width:920px;margin:14px auto}
+.cinematic-media .video{width:100%;max-height:43vh}
+@media(max-width:650px){.cinematic-room{min-height:430px;border-width:4px}.cinematic-media h2,.cinematic-task h2{font-size:clamp(24px,6vw,35px)}}
+
+/* Student-ready museum galleries: immersive room compositions, no split image/cards */
+.cinematic-media,.cinematic-task{
+ --museum-glow:#d6aa65;position:relative;isolation:isolate;overflow:hidden;
+ border:7px ridge #c6a46e;border-radius:34px 34px 22px 22px;
+ min-height:clamp(660px,85vh,1100px);max-width:1180px;
+ background:#101620;padding:clamp(22px,4vw,48px);
+ box-shadow:0 35px 85px #000a,inset 0 0 0 2px #fff2;
+}
+.cinematic-media>.cinematic-scene,.cinematic-task>.cinematic-scene{
+ position:absolute;inset:0;width:100%;height:100%;max-height:none;
+ margin:0;border:0;border-radius:0;object-fit:cover;object-position:center;
+ opacity:.85;z-index:-2;filter:saturate(1.1);
+}
+.cinematic-media:before,.cinematic-task:before{
+ content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
+ background:linear-gradient(180deg,#060a10ae 0%,#08111b98 28%,#08111bdb 62%,#080b12f4 100%);
+}
+.cinematic-media>.eyebrow,.cinematic-task>.eyebrow{font-size:clamp(15px,1.8vw,22px);color:#f7ddb0;letter-spacing:.08em}
+.cinematic-media>h2,.cinematic-task>h2{
+ font-size:clamp(30px,4vw,55px);color:#fff2d9;
+ text-shadow:0 3px 20px #000;line-height:1.25;
+}
+.cinematic-media>.card,.cinematic-task>.card{
+ border:1px solid #c8a876;background:linear-gradient(125deg,#0d1826f0,#1d2630e6);
+ box-shadow:0 18px 45px #0007;backdrop-filter:blur(5px);
+}
+.cinematic-media>.quote,.cinematic-task>p{background:#0a1324d9;border:1px solid #e5c38d88;border-radius:18px;padding:18px 24px;color:#fff3de;max-width:850px;margin:18px auto}
+.cinematic-task>.grid{position:relative;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:14px;margin:20px auto}
+.cinematic-task .tile{background:#101f2ce9;border:1px solid #d8b87d;box-shadow:0 8px 22px #0007;border-radius:15px}
+.cinematic-media.linoy-scene,.cinematic-task.linoy-scene{--museum-glow:#e6b4ff;border-color:#d1a4cf}
+.cinematic-media.hannah-scene,.cinematic-task.hannah-scene{--museum-glow:#d8b789;border-color:#bda17a}
+.cinematic-media.ada-scene,.cinematic-task.ada-scene{--museum-glow:#9fe8de;border-color:#87cfc5}
+.cinematic-media.naomi-scene,.cinematic-task.naomi-scene{--museum-glow:#efc58e;border-color:#d9b37c}
+.cinematic-media h2,.cinematic-task h2{color:var(--museum-glow)}
+.mobile-room{overflow:hidden;border:2px solid #d1ac73;background:#0d1926;padding:0}
+.mobile-room>.cinematic-scene{display:block;width:100%;height:clamp(190px,38vh,350px);object-fit:cover;object-position:center;border-radius:0;margin:0}
+.mobile-room>div:not(.cinematic-scene){padding:14px}
+@media(max-width:680px){
+ .cinematic-media,.cinematic-task{min-height:700px;padding:22px 14px;border-width:4px;border-radius:20px}
+ .cinematic-media>.cinematic-scene,.cinematic-task>.cinematic-scene{height:100%;max-height:none}
+ .cinematic-media>.card,.cinematic-task>.card{padding:16px 12px}
+ .cinematic-media>.quote,.cinematic-task>p{padding:12px}
+}
+
+/* Rich mobile task screens with each room's own cinematic art */
+.student-task{position:relative;overflow:hidden;border:2px solid #d5b47b;background:linear-gradient(150deg,#1b2b38,#0a1523);box-shadow:0 18px 55px #0008;padding:clamp(15px,4vw,30px);border-radius:24px;}
+.student-task>.cinematic-scene{display:block;width:100%;height:clamp(160px,34vw,260px);object-fit:cover;object-position:center;border:3px solid #d7b781;border-radius:15px;margin:0 0 20px;box-shadow:0 14px 30px #0009;}
+.student-task>.eyebrow{color:#f5d99f;letter-spacing:.04em;}
+.student-task h2{font-size:clamp(24px,5vw,36px);line-height:1.35;color:#ffedc8;}
+.student-task .treasure-clue{border:1px solid #e2c289;background:#132a39;padding:18px;border-radius:16px;font-size:clamp(19px,4vw,26px);}
+.student-task button,.student-task input,.student-task textarea{max-width:100%;}
+.student-task.linoy-scene{border-color:#d1a4cf}.student-task.ada-scene{border-color:#87cfc5}.student-task.hannah-scene{border-color:#c7ab7e}.student-task.naomi-scene{border-color:#dfbb8a}
+@media(max-width:600px){.student-task{padding:14px}.student-task>.cinematic-scene{height:190px}.student-task .option{min-height:48px}}
+
+/* Finishing pass: readable student task and progress states */
+.student-task{max-width:760px;margin:0 auto 30px;}
+.student-task>.cinematic-scene{aspect-ratio:16/8;object-fit:cover;}
+.student-task .option{display:block;width:100%;min-height:52px;text-align:right;line-height:1.5;margin:10px 0;}
+.student-task .numeric-choices .option{text-align:center;min-height:58px;font-size:23px;font-weight:800;}
+.student-task .team-note{border:1px solid #d7bb81;background:#132c38;padding:14px;border-radius:14px;margin-top:18px;}
+.student-task .field{font-size:18px;min-height:50px;}
+.student-task button:focus-visible,.student-task input:focus-visible,.student-task textarea:focus-visible{outline:3px solid #f6db91;outline-offset:3px;}
+@media(max-width:600px){.student-task .numeric-choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.student-task .numeric-choices .option{margin:0}.student-task>.cinematic-scene{height:auto;max-height:230px}.student-task{margin:0 0 18px}}
+
+/* Classroom resilience: connection status */
+#museumConnection{display:none;position:fixed;z-index:9999;top:0;left:0;right:0;padding:10px 20px;background:#722b29;color:white;font:700 16px/1.5 Arial,sans-serif;text-align:center;box-shadow:0 3px 18px #0008}
+body.museum-disconnected #museumConnection{display:block}
+body.museum-disconnected #app{padding-top:42px}
+@media (prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
