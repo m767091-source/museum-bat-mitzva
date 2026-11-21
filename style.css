@@ -300,3 +300,9 @@ body{background:radial-gradient(ellipse 80% 52% at 50% -15%,#365f68 0%,transpare
 .cinematic-media .letter .wax-stamp{width:68px;height:68px;border-radius:50%;display:grid;place-items:center;margin:0 auto 16px;background:radial-gradient(circle at 30% 25%,#b7594c,#762d2b 75%);border:5px double #e8ae85;color:#ffe7c7;box-shadow:0 8px 18px #3b171754;font-size:30px}
 @media(max-width:700px){.museum-screening{padding:13px}.screening-top{font-size:11px}.cinematic-media .letter{transform:none;padding:38px 23px}.cinematic-media .letter:before{inset:9px}.cinematic-media .letter p{line-height:1.8}}
 @media(prefers-reduced-motion:no-preference){.cinematic-media .letter{animation:archive-reveal .7s ease-out both}@keyframes archive-reveal{from{opacity:0;transform:translateY(20px) rotate(-1.3deg)}to{opacity:1;transform:translateY(0) rotate(-.45deg)}}}
+
+/* Mobile-friendly Atbash key: each letter pair is a distinct museum tile */
+.cipher-key{display:grid;grid-template-columns:repeat(auto-fit,minmax(94px,1fr));gap:9px;margin:16px 0 22px;direction:rtl}
+.cipher-key span{display:flex;align-items:center;justify-content:center;min-height:54px;padding:8px 6px;border:1px solid #d7b9778c;border-radius:10px;background:linear-gradient(135deg,#f5e8c8,#dbc49b);color:#302619;font-size:clamp(18px,4vw,25px);font-weight:800;box-shadow:inset 0 1px 0 #fff8,0 3px 12px #0003;white-space:nowrap}
+.answer-feedback{padding:10px 14px;border-right:3px solid #e2bf77;background:#f4e4bd16;border-radius:5px;font-weight:700;line-height:1.7}
+@media(max-width:450px){.cipher-key{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.cipher-key span{min-height:49px}}
