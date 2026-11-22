@@ -61,7 +61,8 @@ async def join(req):
         if sum(int(v['team'])==team for v in r['participants'].values())>=MAX_TEAM:return error('הקבוצה מלאה. בחרי קבוצה אחרת.',409)
         uid='p'+secrets.token_hex(9)
         secret=secrets.token_urlsafe(24)
-        r['participants'][uid]={'name':name,'team':team,'joined':int(time.time())}
+        seat=sum(int(v['team'])==team for v in r['participants'].values())
+        r['participants'][uid]={'name':name,'team':team,'joined':int(time.time()),'seat':seat}
         r['playerSecrets'][uid]=secret
         save()
         await broadcast(code)
