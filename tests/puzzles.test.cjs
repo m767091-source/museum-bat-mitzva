@@ -58,9 +58,9 @@ test('Hannah and Naomi remain letters; other three remain videos', () => {
 });
 
 test('Hannah: stable seat maps first student cipher ת to answer א', () => {
-  const assignmentMatch = source.match(/const assignment=([^;]+);/);
+  const assignmentMatch = source.match(/^const assignment=(.*);$/m);
   assert.ok(assignmentMatch, 'Missing assignment');
-  const assignment = vm.runInNewContext('(' + assignmentMatch[1] + ')');
+  const assignment = vm.runInNewContext('(' + assignmentMatch[1] + ')', {group:()=>[]});
   const first = {id:'p1',team:1,seat:0,joined:123};
   const second = {id:'p2',team:1,seat:1,joined:123};
   assert.equal(assignment(first,2),0);
