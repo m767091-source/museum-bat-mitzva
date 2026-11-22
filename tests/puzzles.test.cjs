@@ -56,3 +56,21 @@ test('Hannah and Naomi remain letters; other three remain videos', () => {
   assert.match(source, /'חנה סנש','נעמי שמר'/);
   assert.match(source, /מכתב מומחז ודמיוני/);
 });
+
+test('Hannah: stable seat maps first student cipher ת to answer א', () => {
+  const assignmentMatch = source.match(/const assignment=([^;]+);/);
+  assert.ok(assignmentMatch, 'Missing assignment');
+  const assignment = vm.runInNewContext('(' + assignmentMatch[1] + ')');
+  const first = {id:'p1',team:1,seat:0,joined:123};
+  const second = {id:'p2',team:1,seat:1,joined:123};
+  assert.equal(assignment(first,2),0);
+  assert.equal(assignment(second,2),1);
+  assert.equal(encrypted[assignment(first,2)],'ת');
+  assert.equal(decoded[assignment(first,2)],'א');
+});
+test('Hannah: server stores stable seat and browser validates same assigned letter', () => {
+  const server=fs.readFileSync(path.join(__dirname,'..','server.py'),'utf8');
+  assert.match(server,/['"]seat['"]:seat/);
+  assert.match(source,/Number\.isInteger\(person\.seat\)/);
+  assert.match(source,/typed===answer/);
+});
