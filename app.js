@@ -43,7 +43,7 @@ const goldaOrder=[4,1,6,2,5,3];
 const encrypted=['ת','י','מ','ה','פ','א'];
 const decoded=['א','מ','י','צ','ו','ת'];
 const cipherKey=['א ↔ ת','ב ↔ ש','ג ↔ ר','ד ↔ ק','ה ↔ צ','ו ↔ פ','ז ↔ ע','ח ↔ ס','ט ↔ נ','י ↔ מ','כ ↔ ל'];
-const assignment=(person,i)=>{let peers=group(person.team).sort((a,b)=>a.joined-b.joined);let k=peers.findIndex(x=>x.id===person.id);return Math.max(0,k)%6};
+const assignment=(person,i)=>{if(Number.isInteger(person.seat)&&person.seat>=0&&person.seat<5)return person.seat;let peers=group(person.team).sort((a,b)=>a.joined-b.joined);let k=peers.findIndex(x=>x.id===person.id);return Math.max(0,k)%6};
 const respFor=(i,id)=>state?.responses?.[i]?.[id]||{};
 const completed=(i,person)=>{let r=respFor(i,person.id);if(i===0)return r.sequence===goldaOrder[assignment(person,0)];if(i===1)return r.contribution==='done' && r.choice===1;if(i===2){const typed=String(r.decrypt||'').normalize('NFKC').trim().replace(/[׳'״"\u200e\u200f\u200c\u200d\s]/g,'');const shown=encrypted[assignment(person,2)];const answer=decoded[encrypted.indexOf(shown)];return typed===answer;}if(i===3)return !!r.question?.trim() && r.choice===1;if(i===4)return !!r.word?.trim();return false};
 const teamProgress=(i,n)=>{let peopleIn=group(n);return {total:peopleIn.length,done:peopleIn.filter(person=>completed(i,person)).length}};
