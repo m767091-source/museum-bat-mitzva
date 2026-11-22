@@ -306,3 +306,18 @@ body{background:radial-gradient(ellipse 80% 52% at 50% -15%,#365f68 0%,transpare
 .cipher-key span{display:flex;align-items:center;justify-content:center;min-height:54px;padding:8px 6px;border:1px solid #d7b9778c;border-radius:10px;background:linear-gradient(135deg,#f5e8c8,#dbc49b);color:#302619;font-size:clamp(18px,4vw,25px);font-weight:800;box-shadow:inset 0 1px 0 #fff8,0 3px 12px #0003;white-space:nowrap}
 .answer-feedback{padding:10px 14px;border-right:3px solid #e2bf77;background:#f4e4bd16;border-radius:5px;font-weight:700;line-height:1.7}
 @media(max-width:450px){.cipher-key{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.cipher-key span{min-height:49px}}
+
+/* Accessible parchment styling for the dramatized Hannah Szenes letter. */
+.hannah-scene .letter{font-family:"Segoe Print","Guttman Yad","Comic Sans MS",Arial,sans-serif;letter-spacing:0;direction:rtl;text-align:right;line-height:1.7;background:linear-gradient(140deg,#fff2d3,#ead5aa 80%,#d7b987);border:1px solid #b18c52;box-shadow:0 16px 35px #0006,inset 0 0 35px #9c713522;transform:none;max-width:min(900px,95%);font-size:clamp(17px,1.7vw,23px)}
+.hannah-scene .letter p{margin:0 0 .7em}.hannah-scene .letter small{display:block;margin-top:12px;font-family:Arial,sans-serif;font-size:13px;opacity:.85}
+
+/* Projector-friendly layout: preserve legible text and allow scrolling on shorter displays. */
+@media (min-width: 1000px) and (min-height: 700px) {
+  .presentation { min-height: 0; }
+  .presentation > .intro { margin-top: 12px; margin-bottom: 12px; }
+  .presentation .cinematic-media .cinematic-scene { max-height: min(20vh, 180px); margin-bottom: 10px; }
+  .presentation .cinematic-task .cinematic-scene { max-height: min(18vh, 160px); margin-bottom: 10px; }
+  .presentation .cinematic-media .video { max-height: 34vh; }
+  .presentation .cinematic-media .quote { font-size: clamp(17px, 1.8vw, 23px); }
+  .presentation .intro h2 { font-size: clamp(28px, 3.3vw, 46px); }
+}
