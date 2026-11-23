@@ -579,3 +579,52 @@ body.museum-host .presentation>.cinematic-room .cinematic-scene{
  position:relative;
  z-index:1;
 }
+
+/* Projector composition v19: use the full remaining viewport height, not a letterbox. */
+body.museum-host .presentation:has(>.cinematic-room){
+ position:relative!important;
+ flex:1 1 0!important;
+ height:auto!important;
+ min-height:0!important;
+ padding:0!important;
+ margin:0!important;
+ overflow:hidden!important;
+ display:block!important;
+}
+body.museum-host .presentation>.cinematic-room.themed-door{
+ position:absolute!important;
+ inset:0!important;
+ box-sizing:border-box!important;
+ width:100%!important;
+ height:100%!important;
+ min-height:0!important;
+ max-height:none!important;
+ max-width:none!important;
+ margin:0!important;
+ padding:clamp(12px,2vh,28px) clamp(15px,3vw,48px)!important;
+ border-radius:22px!important;
+ border-width:5px!important;
+}
+body.museum-host .presentation>.cinematic-room.themed-door>.cinematic-scene{
+ position:absolute!important;
+ inset:0!important;
+ width:100%!important;
+ height:100%!important;
+ object-fit:cover!important;
+ object-position:center 50%!important;
+}
+body.museum-host .presentation>.cinematic-room.themed-door:after{
+ inset:0!important;
+ border:0!important;
+ border-radius:inherit!important;
+ background:linear-gradient(180deg,#05091132 0%,#05091122 38%,#050911ad 77%,#050911da 100%)!important;
+}
+body.museum-host .presentation>.cinematic-room.themed-door h2{
+ font-size:clamp(32px,4.8vw,72px)!important;
+}
+body.museum-host .presentation>.cinematic-room.themed-door .huge{
+ font-size:clamp(27px,3.4vw,50px)!important;
+}
+body.museum-host .presentation>.cinematic-room.themed-door p{
+ font-size:clamp(18px,2.1vw,29px)!important;
+}
