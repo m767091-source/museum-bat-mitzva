@@ -628,3 +628,77 @@ body.museum-host .presentation>.cinematic-room.themed-door .huge{
 body.museum-host .presentation>.cinematic-room.themed-door p{
  font-size:clamp(18px,2.1vw,29px)!important;
 }
+
+/* Projected museum: use the entire available stage, including earned-letter scenes. */
+@media(min-width:601px){
+ body.museum-host .presentation{
+  box-sizing:border-box!important;
+  padding:0!important;
+  margin:0!important;
+  min-height:0!important;
+  height:0!important;
+  flex:1 1 0%!important;
+  align-items:stretch!important;
+  justify-content:center!important;
+ }
+ body.museum-host .presentation>.cinematic-room,
+ body.museum-host .presentation>.success-scene{
+  box-sizing:border-box!important;
+  width:100%!important;
+  max-width:none!important;
+  height:100%!important;
+  min-height:0!important;
+  max-height:100%!important;
+  flex:1 1 auto!important;
+  align-self:stretch!important;
+  margin:0!important;
+  padding:clamp(12px,2vh,24px) clamp(14px,2vw,32px)!important;
+  overflow:hidden!important;
+  zoom:1!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+ }
+ body.museum-host .presentation>.cinematic-room{
+  border-radius:22px!important;
+ }
+ body.museum-host .presentation>.success-scene{
+  position:relative!important;
+  isolation:isolate!important;
+  border:5px ridge #d5ae6b!important;
+  border-radius:22px!important;
+  background-position:center!important;
+  background-size:cover!important;
+  background-repeat:no-repeat!important;
+ }
+ body.museum-host .presentation>.success-scene:before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,#08101d88,#050b17b0 70%,#050b17da);
+ }
+ body.museum-host .presentation>.success-scene>*{
+  position:relative;z-index:1;
+ }
+ body.museum-host .presentation>.success-scene h2{
+  font-size:clamp(32px,4.3vw,64px);
+  margin:clamp(5px,1vh,12px) auto;
+ }
+ body.museum-host .presentation>.success-scene .gold-medallion{
+  width:clamp(105px,17vh,175px);
+  height:clamp(105px,17vh,175px);
+  font-size:clamp(58px,10vh,100px);
+  margin:clamp(5px,1vh,14px) auto;
+ }
+ body.museum-host .presentation>.success-scene p{
+  margin:clamp(4px,.8vh,12px) auto;
+ }
+ body.museum-host .presentation>.cinematic-room .cinematic-scene{
+  max-height:none!important;
+  border-radius:0!important;
+ }
+}
+.success-scene.golda-scene{background-image:url('scenes/room_1.png')!important}
+.success-scene.linoy-scene{background-image:url('scenes/room_2.jpg')!important}
+.success-scene.hannah-scene{background-image:url('scenes/room_3.jpg')!important}
+.success-scene.ada-scene{background-image:url('scenes/room_4.jpg')!important}
+.success-scene.naomi-scene{background-image:url('scenes/room_5.jpg')!important}
