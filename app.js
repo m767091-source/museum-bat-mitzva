@@ -151,11 +151,13 @@ function fitMuseumSlide(){
  if(available<100)return;
  const required=Math.max(slide.scrollHeight,Math.ceil(slide.getBoundingClientRect().height));
  const ratio=Math.min(1,available/Math.max(1,required));
- const scale=Math.max(.28,Math.floor(ratio*1000)/1000);
+ // Fit the whole slide: never fall back to an inner scroll bar.
+ const scale=Math.max(.05,Math.floor(ratio*1000)/1000);
  slide.style.zoom=String(scale);
- slide.style.maxHeight=ratio<.28?'100%':'none';
- slide.style.overflowY=ratio<.28?'auto':'visible';
+ slide.style.maxHeight='none';
+ slide.style.overflow='visible';
  slide.dataset.fitRatio=String(scale);
+ slide.dataset.fitsViewport=String(slide.getBoundingClientRect().bottom<=area.getBoundingClientRect().bottom+2);
 }
 let fitFrame=0;
 function scheduleMuseumFit(){
