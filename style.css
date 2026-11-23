@@ -958,3 +958,31 @@ body.museum-host .presentation>.cinematic-room.themed-door p{
   line-height:1.2!important;
  }
 }
+
+/* Brighter gallery lighting without sacrificing caption contrast. */
+@media(min-width:801px){
+ body.museum-host .presentation>.cinematic-media:before,
+ body.museum-host .presentation>.cinematic-task:before{
+  background:linear-gradient(180deg,#07111b55 0%,#07111b46 35%,#07111b7a 76%,#07111b9c 100%)!important;
+ }
+ body.museum-host .presentation>.cinematic-media>.cinematic-scene,
+ body.museum-host .presentation>.cinematic-task>.cinematic-scene{
+  opacity:1!important;
+  filter:brightness(1.22) saturate(1.13)!important;
+ }
+ body.museum-host .presentation>.cinematic-media:has(.museum-screening){
+  gap:3px!important;
+ }
+ body.museum-host .presentation>.cinematic-media:has(.museum-screening) .screening-frame video{
+  height:min(34vh,320px)!important;
+  max-height:34vh!important;
+ }
+ body.museum-host .presentation>.cinematic-media:has(.museum-screening)>.quote{
+  box-sizing:border-box!important;
+  max-width:min(100%,1050px)!important;
+  padding:clamp(5px,.7vh,9px) clamp(10px,1.5vw,18px)!important;
+  margin:2px auto!important;
+  font-size:clamp(14px,2vh,19px)!important;
+  line-height:1.2!important;
+ }
+}
