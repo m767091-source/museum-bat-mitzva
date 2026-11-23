@@ -141,25 +141,37 @@ if(st.kind==='wall')return `<div class="card"><h2>איזה ערך את לוקח�
 return `<div class="card"><h2>🕯️ כרטיס הערכים של ${escape(p.name)}</h2><p>בסיום המפגש תקבלי נר, כתזכורת לאור שאת מביאה לעולם.</p><div class="eyebrow">${escape(labels[p.team-1])}</div>${people.map((x,i)=>`<div class="team" style="margin:11px 0"><strong>${x.icon} ${x.value}</strong><p>${escape(valFor(uid,i)||'עוד לא כתבתי')}</p></div>`).join('')}<h3>הערך שאני לוקחת: ${escape(p.finalValue||'טרם נבחר')}</h3><p>אפשר לצלם את המסך ולשמור למזכרת 💜</p></div>`}
 function bindHost(){let b=$('#next'),prev=$('#prev');if(b)b.onclick=()=>{if(getStage().kind==='vault'&&!state.vaultOpen)return showFeedback('יש להזין תחילה את קוד הכספת');patch('step',Math.min(steps.length-1,state.step+1))};if(prev)prev.onclick=()=>patch('step',Math.max(0,state.step-1));let c=$('#copyLink');if(c)c.onclick=()=>navigator.clipboard?.writeText(link()).then(()=>c.textContent='הקישור הועתק ✓');let unlock=$('#unlock');if(unlock)unlock.onclick=()=>{if($('#vaultCode').value.trim()==='147')patch('step',{step:state.step+1,code:'147'});else showFeedback('זה לא הקוד. נסו שוב!')};let backup=$('#backup');if(backup)backup.onclick=backupClassroom;let reset=$('#reset');if(reset)reset.onclick=()=>{if(confirm('להחזיר את כל הקבוצות לתחילת הפעילות? התשובות יישארו שמורות.'))patch('step',0)};let fs=$('#fullscreen');if(fs)fs.onclick=()=>document.documentElement.requestFullscreen?.();if($('#qr')){$('#qr').innerHTML=`<img src="/api/qr?room=${encodeURIComponent(room)}" width="156" height="156" alt="קוד QR לכניסה למשחק" onerror="this.parentElement.style.display='none'">`}}
 function bindPlayer(){if($('#confirmCup'))$('#confirmCup').onclick=()=>patch(`responses/${getStage().i}/${uid}/contribution`,'done');if($('#saveDecrypt'))$('#saveDecrypt').onclick=()=>patch(`responses/${getStage().i}/${uid}/decrypt`,$('#decrypt').value.trim().slice(0,1));if($('#saveQuestion'))$('#saveQuestion').onclick=()=>patch(`responses/${getStage().i}/${uid}/question`,$('#question').value.trim().slice(0,160));document.querySelectorAll('[data-sequence]').forEach(b=>b.onclick=()=>patch(`responses/${getStage().i}/${uid}/sequence`,Number(b.dataset.sequence)));document.querySelectorAll('[data-choice]').forEach(b=>b.onclick=()=>patch(`responses/${getStage().i}/${uid}/choice`,Number(b.dataset.choice)));if($('#saveWord'))$('#saveWord').onclick=()=>patch(`responses/${getStage().i}/${uid}/word`,$('#word').value.trim().slice(0,40));if($('#saveReflection'))$('#saveReflection').onclick=()=>patch(`responses/${getStage().i}/${uid}/reflection`,$('#reflection').value.trim().slice(0,180));document.querySelectorAll('[data-value]').forEach(b=>b.onclick=()=>patch(`participants/${uid}/finalValue`,b.dataset.value))}
+/* Projector fit: measure the unscaled slide, then scale to the available viewport. */
 function fitMuseumSlide(){
  if(!document.body.classList.contains('museum-host'))return;
  const area=document.querySelector('.presentation'),slide=area?.firstElementChild;
  if(!area||!slide)return;
- slide.style.zoom='1';slide.style.maxHeight='none';slide.style.overflowY='visible';
- const available=area.clientHeight-10;
+ slide.style.zoom='1';slide.style.maxHeight='none';slide.style.overflow='visible';
+ const available=Math.max(0,area.clientHeight-12);
  if(available<100)return;
- const required=Math.max(slide.scrollHeight,slide.getBoundingClientRect().height);
+ const required=Math.max(slide.scrollHeight,Math.ceil(slide.getBoundingClientRect().height));
  const ratio=Math.min(1,available/Math.max(1,required));
- slide.style.zoom=String(Math.max(.38,Math.floor(ratio*1000)/1000));
- slide.style.maxHeight=ratio<.38?'100%':'none';
- slide.style.overflowY=ratio<.38?'auto':'visible';
+ const scale=Math.max(.28,Math.floor(ratio*1000)/1000);
+ slide.style.zoom=String(scale);
+ slide.style.maxHeight=ratio<.28?'100%':'none';
+ slide.style.overflowY=ratio<.28?'auto':'visible';
+ slide.dataset.fitRatio=String(scale);
 }
 let fitFrame=0;
-function scheduleMuseumFit(){cancelAnimationFrame(fitFrame);fitFrame=requestAnimationFrame(()=>requestAnimationFrame(fitMuseumSlide))}
+function scheduleMuseumFit(){
+ cancelAnimationFrame(fitFrame);
+ fitFrame=requestAnimationFrame(()=>requestAnimationFrame(fitMuseumSlide));
+}
 window.addEventListener('resize',scheduleMuseumFit);
 window.addEventListener('load',scheduleMuseumFit);
 document.fonts?.ready?.then(scheduleMuseumFit);
 document.addEventListener('fullscreenchange',scheduleMuseumFit);
+if('ResizeObserver' in window){
+ const museumResizeObserver=new ResizeObserver(()=>scheduleMuseumFit());
+ document.addEventListener('DOMContentLoaded',()=>museumResizeObserver.observe(document.documentElement));
+}
+document.addEventListener('loadedmetadata',e=>{if(e.target?.matches?.('video'))scheduleMuseumFit()},true);
+document.addEventListener('load',e=>{if(e.target?.matches?.('img,iframe'))scheduleMuseumFit()},true);
 function render(){document.body.classList.toggle('museum-host',!!room&&role==='host');if(!room){homepage();return}if(!state){app.innerHTML=header()+`<div class="card wrap"><h2>לא נמצא חדר פעיל</h2><p>בדקי את קוד החדר, או פתחי חדר חדש ממסך המנחה.</p><a class="btn" href="./">חזרה לדף הבית</a></div>`;return}if(role!=='host'&&role!=='player')role='player';let st=getStage();if(role==='player'){let p=state.participants?.[uid];if(!p){joinScreen();return}const preserveFocus=st.kind==='value'?'reflection':st.kind==='task'&&st.i===4?'word':st.kind==='task'&&st.i===3?'question':st.kind==='task'&&st.i===2?'decrypt':null;const current=document.activeElement?.id;const currentVal=preserveFocus===current?document.activeElement.value:null;if(lastStep===state.step&&currentVal!==null){window.pendingMuseumRender=true;return;}window.pendingMuseumRender=false;app.innerHTML=header(`<span class="counter">${escape(p.name)} · ${labels[p.team-1]}</span>`)+treasureBar()+`<div class="wrap"><div class="playerhead"><div class="eyebrow">אולם ${st.i===undefined?'המוזיאון':st.i+1} · ${st.kind==='lobby'?'ממתינות למנחה':'המסע שלנו'}</div><h1>המוזיאון הנעול</h1></div>${playerContent(p)}</div>`;lastStep=state.step;bindPlayer();return}
 app.innerHTML=header(`<span class="counter">${members().length} חוקרות רשומות • חדר ${room}</span>`)+treasureBar()+`<section class="presentation">${hostContent()}</section><div class="hostcontrols"><button class="btn small ghost" id="prev" ${state.step===0?'disabled':''}>❮ הקודם</button><span class="counter">שלב ${state.step+1} / ${steps.length}</span><button class="btn small" id="next" ${state.step>=steps.length-1||(st.kind==='vault'&&!state.vaultOpen)?'disabled':''}>הבא ❯</button><button class="btn small secondary" id="fullscreen">⛶ מסך מלא</button><button class="btn small ghost" id="backup">⬇ גיבוי החדר</button><button class="btn small ghost" id="reset">חזרה להתחלה</button></div>`;bindHost();scheduleMuseumFit()}
 document.addEventListener('focusout',()=>{if(window.pendingMuseumRender&&role==='player'&&state){window.pendingMuseumRender=false;render()}},true);
