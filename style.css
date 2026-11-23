@@ -907,3 +907,54 @@ body.museum-host .presentation>.cinematic-room.themed-door p{
   font-size:clamp(10px,.9vw,13px)!important;padding:2px 5px!important;
  }
 }
+
+/* Projector film composition: keep the gallery title and historical caption visible. */
+@media(min-width:801px){
+ body.museum-host .presentation>.cinematic-media:has(.museum-screening){
+  position:relative!important;isolation:isolate!important;
+  display:flex!important;flex-direction:column!important;
+  align-items:center!important;justify-content:center!important;
+  gap:clamp(3px,.6vh,7px)!important;
+  padding:clamp(7px,1vh,12px) clamp(10px,1.5vw,20px)!important;
+ }
+ body.museum-host .presentation>.cinematic-media:has(.museum-screening)>.cinematic-scene{
+  z-index:-2!important;pointer-events:none!important;
+ }
+ body.museum-host .presentation>.cinematic-media:has(.museum-screening)>.eyebrow{
+  flex:0 0 auto!important;font-size:clamp(12px,1.8vh,17px)!important;
+  line-height:1.1!important;margin:0!important;
+ }
+ body.museum-host .presentation>.cinematic-media:has(.museum-screening)>h2{
+  flex:0 0 auto!important;font-size:clamp(21px,3.4vh,34px)!important;
+  line-height:1.1!important;margin:0!important;
+ }
+ body.museum-host .presentation>.cinematic-media:has(.museum-screening)>.museum-screening{
+  flex:0 1 auto!important;
+  width:min(96%,1020px)!important;
+  max-width:1020px!important;
+  margin:0 auto!important;
+  padding:clamp(5px,.8vh,10px)!important;
+  min-height:0!important;
+ }
+ body.museum-host .presentation>.cinematic-media:has(.museum-screening) .screening-top{
+  padding-bottom:3px!important;line-height:1.1!important;
+ }
+ body.museum-host .presentation>.cinematic-media:has(.museum-screening) .museum-screening h3{
+  margin:3px 0 6px!important;
+  font-size:clamp(16px,2.5vh,24px)!important;
+ }
+ body.museum-host .presentation>.cinematic-media:has(.museum-screening) .screening-frame video{
+  height:min(32vh,320px)!important;max-height:32vh!important;
+ }
+ body.museum-host .presentation>.cinematic-media:has(.museum-screening) .screening-bottom{
+  padding-top:2px!important;font-size:10px!important;line-height:1!important;
+ }
+ body.museum-host .presentation>.cinematic-media:has(.museum-screening)>.quote{
+  flex:0 0 auto!important;box-sizing:border-box!important;
+  max-width:min(96%,1020px)!important;
+  margin:2px auto!important;
+  padding:clamp(5px,.7vh,9px) clamp(10px,1.5vw,18px)!important;
+  font-size:clamp(14px,2vh,19px)!important;
+  line-height:1.2!important;
+ }
+}
