@@ -827,3 +827,83 @@ body.museum-host .presentation>.cinematic-room.themed-door p{
  }
  body:has(.hero) #app>.tiles{display:none!important}
 }
+
+/* Host waiting room: two-column classroom dashboard, never a tall shrunken strip. */
+@media(min-width:801px){
+ body.museum-host .presentation>.host-lobby{
+  box-sizing:border-box!important;
+  width:100%!important;max-width:none!important;
+  height:100%!important;min-height:0!important;max-height:100%!important;
+  margin:0!important;padding:clamp(10px,1.7vh,22px)!important;
+  display:grid!important;
+  grid-template-columns:minmax(230px,29%) minmax(0,1fr)!important;
+  grid-template-rows:auto auto minmax(0,1fr)!important;
+  gap:clamp(5px,1vh,12px) clamp(10px,1.6vw,22px)!important;
+  align-items:start!important;align-content:stretch!important;
+  overflow:hidden!important;zoom:1!important;
+ }
+ body.museum-host .presentation>.host-lobby>.eyebrow{
+  grid-column:1/-1!important;margin:0!important;font-size:clamp(12px,1.2vw,17px)!important;
+ }
+ body.museum-host .presentation>.host-lobby>h2{
+  grid-column:1/-1!important;margin:0!important;
+  font-size:clamp(24px,3.2vw,43px)!important;line-height:1.12!important;
+ }
+ body.museum-host .presentation>.host-lobby>p{
+  grid-column:1/-1!important;margin:0!important;
+  font-size:clamp(13px,1.3vw,18px)!important;line-height:1.3!important;
+ }
+ body.museum-host .presentation>.host-lobby>.facilitator-prep{
+  grid-column:1/-1!important;grid-row:auto!important;
+  margin:0!important;padding:5px 12px!important;
+  font-size:clamp(12px,1vw,15px)!important;
+ }
+ body.museum-host .presentation>.host-lobby>.facilitator-prep[open]{
+  position:absolute!important;z-index:30!important;
+  top:15%!important;left:10%!important;right:10%!important;
+  max-height:65%!important;overflow:auto!important;background:#132b3b!important;
+ }
+ body.museum-host .presentation>.host-lobby>.card:not(.facilitator-prep){
+  grid-column:1!important;grid-row:5!important;
+  box-sizing:border-box!important;
+  margin:0!important;padding:clamp(8px,1.2vh,15px)!important;
+  min-height:0!important;max-height:100%!important;
+  overflow:hidden!important;
+ }
+ body.museum-host .presentation>.host-lobby>.card .code{
+  font-size:clamp(30px,4.5vh,48px)!important;letter-spacing:4px!important;
+ }
+ body.museum-host .presentation>.host-lobby>.card .qr{
+  padding:5px!important;margin:3px auto!important;
+ }
+ body.museum-host .presentation>.host-lobby>.card .qr img{
+  width:clamp(100px,17vh,150px)!important;height:clamp(100px,17vh,150px)!important;
+ }
+ body.museum-host .presentation>.host-lobby>.card .muted{
+  font-size:clamp(10px,1vw,13px)!important;margin:4px auto!important;
+ }
+ body.museum-host .presentation>.host-lobby>.card .btn{
+  min-height:32px!important;padding:5px 10px!important;font-size:13px!important;
+ }
+ body.museum-host .presentation>.host-lobby>.grid{
+  grid-column:2!important;grid-row:5!important;
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  grid-template-rows:repeat(4,minmax(0,1fr))!important;
+  gap:clamp(4px,.8vh,9px)!important;
+  margin:0!important;min-height:0!important;height:100%!important;
+  overflow:hidden!important;
+ }
+ body.museum-host .presentation>.host-lobby>.grid>.team{
+  min-width:0!important;min-height:0!important;
+  padding:clamp(5px,.8vh,9px)!important;
+  font-size:clamp(12px,1.1vw,16px)!important;
+  overflow:hidden!important;
+ }
+ body.museum-host .presentation>.host-lobby>.grid>.team .names{
+  margin-top:3px!important;gap:3px!important;
+ }
+ body.museum-host .presentation>.host-lobby>.grid>.team .names span{
+  font-size:clamp(10px,.9vw,13px)!important;padding:2px 5px!important;
+ }
+}
