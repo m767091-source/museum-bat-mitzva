@@ -410,3 +410,42 @@ body{background:radial-gradient(ellipse 80% 52% at 50% -15%,#365f68 0%,transpare
  .cinematic-media.hannah-scene .letter,
  .cinematic-media.naomi-scene .letter{font-size:clamp(19px,5vw,26px);padding:25px 20px}
 }
+
+/* Paper stationery refinement: flat ink, real ruled writing paper, no grey text shadow. */
+.cinematic-media.hannah-scene .letter,
+.cinematic-media.naomi-scene .letter{
+ color:#342e29;
+ text-shadow:none!important;
+ filter:none;
+ border:1px solid #d6c7aa;
+ border-radius:2px;
+ background:
+   linear-gradient(to left,transparent 0,transparent 52px,#d6a4a080 53px,#d6a4a080 54px,transparent 55px),
+   repeating-linear-gradient(to bottom,transparent 0,transparent 35px,#9fb9c55c 36px,#9fb9c55c 37px,transparent 38px),
+   linear-gradient(105deg,#f8f0df,#fffdf5 50%,#f6eddb);
+ box-shadow:0 4px 16px #0003;
+ transform:none;
+}
+.cinematic-media.hannah-scene .letter *,
+.cinematic-media.naomi-scene .letter *{
+ text-shadow:none!important;
+ -webkit-text-stroke:0!important;
+ filter:none!important;
+}
+.cinematic-media.hannah-scene .letter:before,
+.cinematic-media.naomi-scene .letter:before{
+ content:none!important;
+}
+.cinematic-media.hannah-scene .letter:after,
+.cinematic-media.naomi-scene .letter:after{
+ content:none!important;
+}
+.cinematic-media.hannah-scene .letter p,
+.cinematic-media.naomi-scene .letter p{
+ color:#292d35;
+ text-shadow:none!important;
+}
+.cinematic-media.hannah-scene .letter .wax-stamp,
+.cinematic-media.naomi-scene .letter .wax-stamp{
+ box-shadow:none;
+}
