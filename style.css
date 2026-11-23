@@ -536,3 +536,46 @@ body.museum-host .presentation>.cinematic-room .cinematic-scene{
  height:100%;
  object-fit:cover;
 }
+
+/* Door layout independent of host class: guard against stale host state. */
+.presentation:has(>.themed-door){
+ width:100%!important;
+ min-width:0!important;
+ align-items:stretch!important;
+}
+.presentation>.themed-door.cinematic-room{
+ width:100%!important;
+ max-width:none!important;
+ height:100%!important;
+ min-height:0!important;
+ max-height:none!important;
+ align-self:stretch!important;
+ margin:0!important;
+ padding:clamp(18px,3vh,40px)!important;
+ display:flex!important;
+ flex-direction:column!important;
+ justify-content:center!important;
+ align-items:center!important;
+ position:relative!important;
+ overflow:hidden!important;
+ transform:none!important;
+ zoom:1!important;
+}
+.presentation>.themed-door.cinematic-room>img.cinematic-scene{
+ position:absolute!important;
+ inset:0!important;
+ display:block!important;
+ width:100%!important;
+ height:100%!important;
+ max-height:none!important;
+ max-width:none!important;
+ margin:0!important;
+ border:0!important;
+ border-radius:0!important;
+ object-fit:cover!important;
+ z-index:-2!important;
+}
+.presentation>.themed-door.cinematic-room>*:not(img){
+ position:relative;
+ z-index:1;
+}
