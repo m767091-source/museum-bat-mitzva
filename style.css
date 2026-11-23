@@ -986,3 +986,24 @@ body.museum-host .presentation>.cinematic-room.themed-door p{
   line-height:1.2!important;
  }
 }
+
+/* Projector: restore detail in Linoy's purple gallery and keep captions visible. */
+@media(min-width:601px){
+ body.museum-host .presentation>.cinematic-media.linoy-scene:before,
+ body.museum-host .presentation>.cinematic-task.linoy-scene:before{
+  background:linear-gradient(180deg,#090b1938 0%,#090b1930 42%,#090b195e 77%,#090b198a 100%)!important;
+ }
+ body.museum-host .presentation>.cinematic-media.linoy-scene>.cinematic-scene,
+ body.museum-host .presentation>.cinematic-task.linoy-scene>.cinematic-scene{
+  opacity:1!important;filter:brightness(1.34) saturate(1.16)!important;
+ }
+ body.museum-host .presentation>.cinematic-media.linoy-scene>h2{
+  font-size:clamp(23px,3vw,38px)!important;
+  line-height:1.13!important;
+  margin:3px auto 6px!important;
+ }
+ body.museum-host .presentation>.cinematic-media.linoy-scene>.quote{
+  margin:4px auto!important;padding:6px 14px!important;
+  font-size:clamp(13px,1.65vh,18px)!important;
+ }
+}
