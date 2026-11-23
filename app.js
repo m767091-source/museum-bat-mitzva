@@ -149,7 +149,7 @@ function fitMuseumSlide(){
  // Museum door scenes already have a responsive full-viewport layout.
  // Measuring their historical min-height and zooming the entire panel makes
  // the projected image tiny, so keep these scenes at their natural 100% size.
- if(slide.classList.contains('cinematic-room')){
+ if(slide.classList.contains('cinematic-room') || (window.innerWidth>800 && slide.classList.contains('cinematic-media') && slide.querySelector('.museum-screening'))){
   slide.style.zoom='1';
   slide.style.maxHeight='100%';
   slide.style.overflow='hidden';
