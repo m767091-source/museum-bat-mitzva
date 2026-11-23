@@ -321,3 +321,24 @@ body{background:radial-gradient(ellipse 80% 52% at 50% -15%,#365f68 0%,transpare
   .presentation .cinematic-media .quote { font-size: clamp(17px, 1.8vw, 23px); }
   .presentation .intro h2 { font-size: clamp(28px, 3.3vw, 46px); }
 }
+
+
+/* Empowering bat-mitzvah finale */
+.finale-scene{position:relative;isolation:isolate;overflow:hidden;text-align:center;width:min(1150px,100%);margin:22px auto;padding:clamp(24px,4vw,56px);border:5px ridge #d9b77a;border-radius:32px;background:radial-gradient(ellipse at 50% 36%,#745c4970,transparent 58%),radial-gradient(ellipse at 12% 14%,#a1784480,transparent 36%),linear-gradient(145deg,#182c3a,#071520 75%);box-shadow:0 25px 80px #000b,inset 0 0 100px #cda25e19}
+.finale-scene:before,.finale-scene:after{content:"";position:absolute;top:0;bottom:0;width:18%;background:linear-gradient(90deg,#4c3321,#a57842 45%,#4c3321);opacity:.24;z-index:-1;animation:finale-open 2s ease-out both}
+.finale-scene:before{right:0;transform-origin:right}.finale-scene:after{left:0;transform-origin:left}
+.finale-glow{color:#f9d78e;font-size:clamp(35px,6vw,70px);letter-spacing:12px;text-shadow:0 0 40px #e7bc6c;animation:floaty 3s infinite alternate}
+.finale-scene h2{font-size:clamp(28px,4.7vw,60px);color:#ffecbd;line-height:1.3;text-shadow:0 4px 24px #000;margin:18px auto 30px}
+.finale-portraits{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin:25px auto 38px}
+.finale-portrait{display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:center;border:1px solid #d3ae75;border-radius:90px 90px 16px 16px;background:linear-gradient(160deg,#395465,#162b37);padding:17px 7px;min-height:145px;box-shadow:0 12px 24px #0005}
+.finale-icon{font-size:36px}.finale-portrait strong{color:#fff0cc;font-size:clamp(13px,1.5vw,20px)}.finale-portrait small{color:#d9bd8e;font-size:13px}
+.finale-mirror{width:min(360px,85%);aspect-ratio:4/4.5;margin:22px auto;border:13px ridge #e5bb70;border-radius:48% 48% 45% 45%;padding:13px;box-shadow:0 0 0 5px #684b2b,0 0 70px #f4c47b66,inset 0 0 30px #fff7}
+.finale-mirror-inner{width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:14px;padding:20px;background:radial-gradient(ellipse at 48% 27%,#b1cbd2aa,#1b3e54 75%);border-radius:inherit;color:#fff8eb;font-size:clamp(16px,2.2vw,23px);text-shadow:0 3px 8px #07131b}
+.finale-mirror-inner strong{font-size:clamp(30px,4.5vw,50px);color:#ffdfa0}
+.finale-message{font-size:clamp(19px,2.7vw,29px);line-height:1.8}
+.finale-song{display:flex;flex-direction:column;align-items:center;gap:9px;margin:26px auto;padding:18px;border:1px solid #d7b77888;border-radius:20px;background:#091c29ba;font-weight:700}
+.finale-song small{font-weight:400;color:#d7d4c9}.finale-lastline{font-size:clamp(23px,3.5vw,42px);color:#ffe0a4;font-weight:900;line-height:1.4;margin:35px auto 0}
+.finale-player{text-align:center;background:radial-gradient(circle at 50% 20%,#5a523c,#122b38 70%);border:2px solid #d9b77a}.finale-player h2{color:#ffdea3}
+@keyframes finale-open{from{width:49%;opacity:.95}to{width:18%;opacity:.24}}
+@media(max-width:720px){.finale-portraits{grid-template-columns:repeat(3,minmax(0,1fr))}.finale-portrait{min-height:110px}.finale-scene{padding:20px 12px}.finale-mirror{border-width:9px}}
+@media(prefers-reduced-motion:reduce){.finale-scene:before,.finale-scene:after,.finale-glow{animation:none}}
