@@ -84,7 +84,7 @@ async def patch(req):
             if path != 'step':return error('פעולה לא מורשית',403)
             code_input = val.get('code') if isinstance(val,dict) else None
             target = val.get('step') if isinstance(val,dict) else val
-            if type(target)!=int or not 0<=target<=29:return error('שלב לא תקין',400)
+            if type(target)!=int or not 0<=target<=30:return error('שלב לא תקין',400)
             # Do not let a teacher's Next button accidentally skip the final puzzle.
             if target>=28 and r['step']<=27 and not r.get('vaultOpen',False):
                 if code_input!='147':return error('יש לפענח את קוד הכספת תחילה',403)
