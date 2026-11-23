@@ -74,3 +74,18 @@ test('Hannah: server stores stable seat and browser validates same assigned lett
   assert.match(source,/Number\.isInteger\(person\.seat\)/);
   assert.match(source,/typed===answer/);
 });
+
+
+test('Finale follows the original candle ending without removing it', () => {
+  assert.match(source, /\{kind:'wall'\},\{kind:'end'\},\{kind:'finale'\}/);
+  assert.match(source, /if\(st\.kind==='finale'\)return finaleScene\(\)/);
+  assert.match(source, /האור שאני מביאה לעולם/);
+  assert.match(source, /המוזיאון נסגר\. הסיפור שלכן רק מתחיל\./);
+});
+test('Finale is synchronized to student phones and offers facilitator-controlled song link', () => {
+  assert.match(source, /if\(st\.kind==='finale'\)return `<div class="card finale-player"/);
+  assert.match(source, /מה שאת אוהבת/);
+  assert.match(source, /target="_blank" rel="noopener noreferrer"/);
+  assert.doesNotMatch(source, /<audio[^>]*autoplay/i);
+  assert.doesNotMatch(source, /<iframe[^>]*autoplay/i);
+});
