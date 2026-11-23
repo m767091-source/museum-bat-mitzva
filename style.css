@@ -765,3 +765,65 @@ body.museum-host .presentation>.cinematic-room.themed-door p{
   margin:0!important;font-size:clamp(12px,1.2vw,17px)!important;
  }
 }
+
+/* Landing screen: the entire welcome composition must fit a classroom laptop. */
+@media(min-width:701px){
+ body:has(.hero) #app{
+  box-sizing:border-box!important;
+  height:100dvh!important;
+  min-height:0!important;
+  padding:clamp(6px,1vh,12px) clamp(10px,1.7vw,24px)!important;
+  display:flex!important;
+  flex-direction:column!important;
+  overflow:hidden!important;
+ }
+ body:has(.hero) #app>.brand{
+  flex:0 0 auto!important;
+  padding:3px 2px 7px!important;
+ }
+ body:has(.hero) #app>.hero{
+  box-sizing:border-box!important;
+  flex:1 1 0%!important;
+  width:100%!important;
+  max-width:none!important;
+  min-height:0!important;
+  height:0!important;
+  margin:8px auto 4px!important;
+  padding:clamp(10px,1.6vh,20px) 20px!important;
+  border-width:4px!important;
+  border-radius:24px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  align-items:center!important;
+  gap:clamp(3px,.6vh,8px)!important;
+  overflow:hidden!important;
+ }
+ body:has(.hero) .hero>.ornament{font-size:clamp(20px,3.5vh,36px)!important;line-height:1!important}
+ body:has(.hero) .hero>.eyebrow{font-size:clamp(12px,1.6vh,18px)!important;margin:0!important}
+ body:has(.hero) .hero>h1{
+  font-size:clamp(40px,8vh,82px)!important;
+  line-height:1.05!important;
+  margin:clamp(2px,.5vh,6px) 0!important;
+ }
+ body:has(.hero) .hero>p:not(.footnote){
+  font-size:clamp(17px,2.7vh,26px)!important;
+  line-height:1.22!important;
+  margin:clamp(2px,.6vh,8px) auto!important;
+ }
+ body:has(.hero) .hero>.btn{
+  box-sizing:border-box!important;
+  width:min(340px,80%)!important;
+  min-width:0!important;
+  min-height:clamp(36px,5.5vh,48px)!important;
+  padding:5px 15px!important;
+  margin:2px!important;
+  font-size:clamp(15px,2.2vh,19px)!important;
+ }
+ body:has(.hero) .hero>.footnote{
+  font-size:clamp(11px,1.65vh,14px)!important;
+  line-height:1.2!important;
+  margin:2px auto!important;
+ }
+ body:has(.hero) #app>.tiles{display:none!important}
+}
