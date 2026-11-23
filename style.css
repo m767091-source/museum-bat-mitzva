@@ -357,3 +357,55 @@ body{background:radial-gradient(ellipse 80% 52% at 50% -15%,#365f68 0%,transpare
 
 /* Full-screen direct preview uses the exact same projector fitting as the host. */
 @media(min-width:601px){body.museum-preview .preview-header{flex:0 0 auto;text-align:center;padding:5px 0}body.museum-preview .preview-tabs{margin:4px auto;gap:5px}body.museum-preview .preview-tabs .btn{min-height:31px;padding:5px 9px;margin:1px}body.museum-preview .preview-back{flex:0 0 auto;margin:5px auto}body.museum-preview .presentation .preview-stage{width:100%;max-width:1050px;margin:0 auto;align-self:center}body.museum-preview .presentation .preview-stage .letter{margin:7px auto;padding:clamp(14px,2vh,30px) clamp(20px,3vw,50px)}body.museum-preview .presentation .preview-stage .letter p{line-height:1.5;margin:0 0 .5em}body.museum-preview .presentation .preview-stage .video{max-height:45vh}body.museum-preview .presentation .preview-stage .finale-scene{margin:0 auto}}
+
+/* Distinct Hebrew letter typography: use an actual Hebrew handwriting font,
+   not Solitreo/Segoe Print which fall back to a generic font for Hebrew. */
+@import url('https://fonts.googleapis.com/css2?family=Gveret+Levin&family=Assistant:wght@400;500;600;700&display=swap');
+.cinematic-media.hannah-scene .letter,
+.cinematic-media.naomi-scene .letter{
+ direction:rtl;text-align:right;
+ font-family:'Gveret Levin','Segoe UI',Arial,sans-serif;
+ letter-spacing:0;
+ font-weight:400;
+ font-size:clamp(20px,2.25vw,31px);
+ line-height:1.5;
+ transform:none;
+}
+.cinematic-media.hannah-scene .letter{
+ background:linear-gradient(125deg,#d5b889,#fff3d3 20%,#f4e1b5 85%,#d7b985);
+ border:2px solid #b18b55;
+ border-radius:4px 14px 8px 17px;
+ box-shadow:0 20px 60px #0008,inset 0 0 42px #9b6c3228;
+}
+.cinematic-media.naomi-scene .letter{
+ background:repeating-linear-gradient(transparent 0 43px,#b3a5a045 44px 45px),linear-gradient(125deg,#f6e9db,#fff8ed 60%,#e9d8c7);
+ border:2px solid #b49d91;
+ border-radius:5px;
+ box-shadow:0 20px 60px #0008,inset 0 0 35px #a17d7920;
+ color:#3c3540;
+}
+.cinematic-media.hannah-scene .letter p,
+.cinematic-media.naomi-scene .letter p{
+ font-family:inherit!important;
+ font-size:inherit;
+ line-height:1.45!important;
+ margin:0 0 .5em!important;
+ font-weight:400;
+}
+.cinematic-media.hannah-scene .letter p:first-of-type,
+.cinematic-media.naomi-scene .letter p:first-of-type{
+ font-family:inherit!important;
+ font-size:1.25em;
+ font-weight:400;
+}
+.cinematic-media.hannah-scene .letter small,
+.cinematic-media.naomi-scene .letter small{
+ font-family:'Assistant',Arial,sans-serif;
+ font-size:13px;
+ line-height:1.35;
+ margin-top:10px;
+}
+@media(max-width:700px){
+ .cinematic-media.hannah-scene .letter,
+ .cinematic-media.naomi-scene .letter{font-size:clamp(19px,5vw,26px);padding:25px 20px}
+}
