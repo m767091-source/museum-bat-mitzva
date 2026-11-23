@@ -146,6 +146,17 @@ function fitMuseumSlide(){
  if(!document.body.classList.contains('museum-host'))return;
  const area=document.querySelector('.presentation'),slide=area?.firstElementChild;
  if(!area||!slide)return;
+ // Museum door scenes already have a responsive full-viewport layout.
+ // Measuring their historical min-height and zooming the entire panel makes
+ // the projected image tiny, so keep these scenes at their natural 100% size.
+ if(slide.classList.contains('cinematic-room')){
+  slide.style.zoom='1';
+  slide.style.maxHeight='100%';
+  slide.style.overflow='hidden';
+  slide.dataset.fitRatio='1';
+  slide.dataset.fitsViewport='true';
+  return;
+ }
  slide.style.zoom='1';slide.style.maxHeight='none';slide.style.overflow='visible';
  const available=Math.max(0,area.clientHeight-12);
  if(available<100)return;
