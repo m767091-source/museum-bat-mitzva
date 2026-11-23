@@ -354,3 +354,6 @@ body{background:radial-gradient(ellipse 80% 52% at 50% -15%,#365f68 0%,transpare
 
 /* Allow slide fitting on smaller laptops; the participant view is unchanged. */
 @media (min-width:601px) and (max-width:800px){body.museum-host .hostcontrols{position:relative}body.museum-host .presentation{min-height:0}}
+
+/* Full-screen direct preview uses the exact same projector fitting as the host. */
+@media(min-width:601px){body.museum-preview .preview-header{flex:0 0 auto;text-align:center;padding:5px 0}body.museum-preview .preview-tabs{margin:4px auto;gap:5px}body.museum-preview .preview-tabs .btn{min-height:31px;padding:5px 9px;margin:1px}body.museum-preview .preview-back{flex:0 0 auto;margin:5px auto}body.museum-preview .presentation .preview-stage{width:100%;max-width:1050px;margin:0 auto;align-self:center}body.museum-preview .presentation .preview-stage .letter{margin:7px auto;padding:clamp(14px,2vh,30px) clamp(20px,3vw,50px)}body.museum-preview .presentation .preview-stage .letter p{line-height:1.5;margin:0 0 .5em}body.museum-preview .presentation .preview-stage .video{max-height:45vh}body.museum-preview .presentation .preview-stage .finale-scene{margin:0 auto}}
