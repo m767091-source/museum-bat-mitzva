@@ -702,3 +702,43 @@ body.museum-host .presentation>.cinematic-room.themed-door p{
 .success-scene.hannah-scene{background-image:url('scenes/room_3.jpg')!important}
 .success-scene.ada-scene{background-image:url('scenes/room_4.jpg')!important}
 .success-scene.naomi-scene{background-image:url('scenes/room_5.jpg')!important}
+
+/* Projector media stage: large screening, no auto-zoom into a postcard. */
+@media(min-width:801px){
+ body.museum-host .presentation>.cinematic-media:has(.museum-screening){
+  box-sizing:border-box!important;
+  width:100%!important;
+  max-width:none!important;
+  min-height:0!important;
+  height:100%!important;
+  max-height:100%!important;
+  margin:0!important;
+  padding:clamp(8px,1.5vh,18px) clamp(12px,2vw,28px)!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  gap:clamp(3px,.7vh,9px)!important;
+  overflow:hidden!important;
+  zoom:1!important;
+ }
+ body.museum-host .presentation>.cinematic-media:has(.museum-screening)>.cinematic-scene{
+  position:absolute!important;inset:0!important;width:100%!important;height:100%!important;
+  max-height:none!important;object-fit:cover!important;margin:0!important;
+ }
+ body.museum-host .presentation>.cinematic-media:has(.museum-screening)>h2{
+  margin:0!important;font-size:clamp(24px,3vw,43px)!important;line-height:1.12!important;
+ }
+ body.museum-host .presentation>.cinematic-media:has(.museum-screening)>.museum-screening{
+  box-sizing:border-box!important;
+  width:min(100%,1000px)!important;max-width:1000px!important;
+  padding:clamp(7px,1.2vh,14px)!important;margin:0 auto!important;
+ }
+ body.museum-host .presentation .museum-screening .screening-frame video{
+  display:block;width:100%!important;height:min(41vh,400px)!important;
+  max-height:41vh!important;object-fit:contain!important;
+ }
+ body.museum-host .presentation>.cinematic-media:has(.museum-screening)>.quote{
+  font-size:clamp(16px,1.65vw,23px)!important;line-height:1.25!important;
+  margin:2px auto!important;
+ }
+}
