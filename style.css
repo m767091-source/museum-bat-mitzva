@@ -742,3 +742,26 @@ body.museum-host .presentation>.cinematic-room.themed-door p{
   margin:2px auto!important;
  }
 }
+
+/* Compact film projector chrome: reserve screen height for the actual film. */
+@media(min-width:801px){
+ body.museum-host .presentation>.cinematic-media:has(.museum-screening) .screening-top{
+  padding:0 4px 5px!important;font-size:clamp(11px,1vw,14px)!important;
+ }
+ body.museum-host .presentation>.cinematic-media:has(.museum-screening) .museum-screening h3{
+  font-size:clamp(18px,2vw,28px)!important;
+  margin:5px 0 9px!important;line-height:1.2!important;
+ }
+ body.museum-host .presentation>.cinematic-media:has(.museum-screening) .screening-bottom{
+  padding-top:4px!important;font-size:13px!important;
+ }
+ body.museum-host .presentation>.cinematic-media:has(.museum-screening) .screening-frame{
+  border-width:5px!important;
+ }
+ body.museum-host .presentation>.cinematic-media:has(.museum-screening) .screening-frame video{
+  height:min(39vh,370px)!important;max-height:39vh!important;
+ }
+ body.museum-host .presentation>.cinematic-media:has(.museum-screening)>.eyebrow{
+  margin:0!important;font-size:clamp(12px,1.2vw,17px)!important;
+ }
+}
