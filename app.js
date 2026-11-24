@@ -120,14 +120,15 @@ function finaleScene(){return `<div class="finale-scene finale-cinematic finale-
 
 function initOriginalFinale(){
  const scene=document.querySelector('.finale-original');if(!scene||scene.dataset.bound)return;scene.dataset.bound='1';
- const video=scene.querySelector('video'),panel=scene.querySelector('.finale-load-panel'),input=scene.querySelector('#finaleFile'),last=scene.querySelector('.finale-lastline');
- const play=()=>{last.style.visibility='hidden';video.currentTime=0;video.play().catch(()=>{last.style.visibility='visible'});};
+ const video=scene.querySelector('video'),panel=scene.querySelector('.finale-load-panel'),input=scene.querySelector('#finaleFile'),last=scene.querySelector('.finale-lastline'),notice=panel.querySelector('small');
+ const key='museum_finale_original_v1';
+ const play=()=>{last.style.visibility='hidden';video.currentTime=0;video.play().catch(()=>{last.style.visibility='visible';video.controls=true})};
  video.addEventListener('ended',()=>{last.style.visibility='visible'});
- video.addEventListener('loadeddata',()=>{panel.hidden=true;video.style.visibility='visible';play()},{once:true});
- video.addEventListener('error',()=>{panel.hidden=false;video.style.visibility='hidden';last.style.visibility='visible'});
+ video.addEventListener('loadeddata',()=>{panel.hidden=true;video.style.visibility='visible';play()});
+ video.addEventListener('error',()=>{panel.hidden=false;video.style.visibility='hidden';last.style.visibility='visible';notice.textContent='יש לבחור את סרטון הסיום שהוכן מראש. לאחר טעינה הוא יישמר בדפדפן, אם ניתן.'});
  scene.querySelector('#finaleReplay').onclick=()=>{if(video.readyState>=2)play();else panel.hidden=false};
- input.onchange=()=>{const file=input.files[0];if(!file)return;const reader=new FileReader();reader.onload=()=>{try{localStorage.setItem('museum_finale_original_v1',reader.result)}catch(e){};panel.hidden=true;video.style.visibility='visible';video.src=reader.result;video.load();video.play().catch(()=>{});};reader.readAsDataURL(file)};
- let saved=null;try{saved=localStorage.getItem('museum_finale_original_v1')}catch(e){}
+ input.onchange=()=>{const file=input.files[0];if(!file)return;const reader=new FileReader();notice.textContent='טוען את האנימציה…';reader.onerror=()=>{notice.textContent='הטעינה נכשלה. יש לבחור שוב את הקובץ.'};reader.onload=()=>{try{localStorage.setItem(key,reader.result);notice.textContent='האנימציה נשמרה במחשב זה.'}catch(e){notice.textContent='האנימציה זמינה להפעלה זו בלבד; האחסון בדפדפן אינו זמין.'}video.src=reader.result;video.load()};reader.readAsDataURL(file)};
+ let saved=null;try{saved=localStorage.getItem(key)}catch(e){}
  video.src=saved||'scenes/museum_finale.mp4';
 }
 function hostContent(){const st=getStage();if(st.kind==='finale')return finaleScene();if(st.kind==='lobby')return hostLobby();if(st.kind==='intro')return `<div class="intro"><div class="ornament">🔐</div><h2>הלילה המוזיאון ננעל...</h2><p>חמש נשים השאירו לנו חמש משימות. כל אישה שומרת אות אחת. רק אם נפעל יחד, נוכל לגלות את מילת הסוד ולפתוח את הכספת.</p><div class="eyebrow">לכל קול יש מקום. לכל משתתפת יש תפקיד.</div></div>`;
