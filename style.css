@@ -1126,3 +1126,12 @@ body.museum-host .finale-cinematic h2{font-size:clamp(25px,4.8vh,49px)!important
 @keyframes finale-light-motion{0%,12%,100%{opacity:0}40%,65%{opacity:1}88%{opacity:.12}}
 @keyframes finale-lastline-reveal{0%,78%{opacity:0;transform:translateY(5px)}100%{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){.finale-playing .finale-door-left,.finale-playing .finale-door-right,.finale-playing .finale-walker,.finale-playing .finale-light,.finale-playing .finale-lastline{animation:none!important}}
+
+/* Use original approved footage rather than a drawn approximation. */
+body.museum-host .presentation>.finale-original{background:linear-gradient(180deg,#09121c,#152536 50%,#09121c)!important}
+.finale-original .finale-stage{position:relative;min-height:0;overflow:hidden;border-radius:12px;background:url("scenes/room_1.png") center/cover no-repeat}
+.finale-original-film{width:100%;height:100%;object-fit:contain;display:block;visibility:hidden}
+.finale-load-panel{position:absolute;inset:0;background:#0b1727a8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:#fff3d8}
+.finale-load-panel[hidden]{display:none!important}
+.finale-load-panel label{cursor:pointer}
+.finale-original .finale-lastline{visibility:visible}
