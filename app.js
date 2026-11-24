@@ -193,6 +193,15 @@ function render(){document.body.classList.toggle('museum-host',!!room&&role==='h
 app.innerHTML=header(`<span class="counter">${members().length} חוקרות רשומות • חדר ${room}</span>`)+treasureBar()+`<section class="presentation">${hostContent()}</section><div class="hostcontrols"><button class="btn small ghost" id="prev" ${state.step===0?'disabled':''}>❮ הקודם</button><span class="counter">שלב ${state.step+1} / ${steps.length}</span><button class="btn small" id="next" ${state.step>=steps.length-1||(st.kind==='vault'&&!state.vaultOpen)?'disabled':''}>הבא ❯</button><button class="btn small secondary" id="fullscreen">⛶ מסך מלא</button><button class="btn small ghost" id="backup">⬇ גיבוי החדר</button><button class="btn small ghost" id="reset">חזרה להתחלה</button></div>`;bindHost();scheduleMuseumFit()}
 document.addEventListener('focusout',()=>{if(window.pendingMuseumRender&&role==='player'&&state){window.pendingMuseumRender=false;render()}},true);
 document.addEventListener('keydown',e=>{if(role!=='host'||!state||['INPUT','TEXTAREA'].includes(document.activeElement?.tagName))return;if(e.key===' '||e.key==='ArrowLeft'){e.preventDefault();if(getStage().kind==='vault'&&!state.vaultOpen)return showFeedback('יש להזין את קוד הכספת');patch('step',Math.min(steps.length-1,state.step+1))}if(e.key==='ArrowRight'){e.preventDefault();patch('step',Math.max(0,state.step-1))}});
+function slidePreview(){
+ document.body.classList.add('museum-host','museum-preview');
+ const qs=new URLSearchParams(location.search);
+ state=initial();state.step=Math.max(0,Math.min(steps.length-1,(Number(qs.get('slide'))||1)-1));
+ const n=state.step+1;
+ app.innerHTML=header()+treasureBar()+`<section class="presentation">${hostContent()}</section><div class="hostcontrols"><a class="btn small ghost" href="?slide=${Math.max(1,n-1)}">❮ הקודם</a><span class="counter">תצוגה בלבד · ${n} / ${steps.length}</span><a class="btn small" href="?slide=${Math.min(steps.length,n+1)}">הבא ❯</a><button class="btn small secondary" id="fullscreen">⛶ מסך מלא</button><a class="btn small ghost" href="./?new=1">חזרה למוזיאון</a></div>`;
+ document.querySelector('#fullscreen').onclick=()=>document.documentElement.requestFullscreen?.();
+ scheduleMuseumFit();
+}
 function museumPreview(){
  document.body.classList.add('museum-host','museum-preview');
  const qs=new URLSearchParams(location.search),tab=qs.get('preview')||'golda';
@@ -201,5 +210,5 @@ function museumPreview(){
  app.innerHTML=header()+`<div class="preview-header"><div class="eyebrow">תצוגה מקדימה · ללא פתיחת חדר</div><nav class="preview-tabs" aria-label="בחירת תצוגה">${tabs.map(x=>`<a class="btn small ${x[0]===selected[0]?'':'secondary'}" href="?preview=${x[0]}">${x[1]}</a>`).join('')}</nav></div><section class="presentation"><div class="preview-stage intro cinematic-media ${p?sceneClasses[selected[2]]:''}">${p?`<h2>${p.name}</h2>${videoMarkup(p)}`:finaleScene()}</div></section><div class="preview-back"><a class="btn small ghost" href="./">חזרה למוזיאון</a></div>`;
  scheduleMuseumFit();
 }
-if(new URLSearchParams(location.search).has('preview'))museumPreview();else if(room)connect();else homepage();
+if(new URLSearchParams(location.search).has('slide'))slidePreview();else if(new URLSearchParams(location.search).has('preview'))museumPreview();else if(room)connect();else homepage();
 })();
