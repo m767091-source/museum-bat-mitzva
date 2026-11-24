@@ -200,6 +200,9 @@ function slidePreview(){
  const n=state.step+1;
  app.innerHTML=header()+treasureBar()+`<section class="presentation">${hostContent()}</section><div class="hostcontrols"><a class="btn small ghost" href="?slide=${Math.max(1,n-1)}">❮ הקודם</a><span class="counter">תצוגה בלבד · ${n} / ${steps.length}</span><a class="btn small" href="?slide=${Math.min(steps.length,n+1)}">הבא ❯</a><button class="btn small secondary" id="fullscreen">⛶ מסך מלא</button><a class="btn small ghost" href="./?new=1">חזרה למוזיאון</a></div>`;
  document.querySelector('#fullscreen').onclick=()=>document.documentElement.requestFullscreen?.();
+ const unlock=document.querySelector('#unlock');
+ if(unlock)unlock.onclick=()=>{if(document.querySelector('#vaultCode').value.trim()==='147'){history.replaceState({},'', '?slide=29');slidePreview()}else showFeedback('זה לא הקוד. נסו שוב!')};
+ document.querySelectorAll('.hostcontrols a[href^="?slide="]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();history.replaceState({},'',a.getAttribute('href'));slidePreview()}));
  scheduleMuseumFit();
 }
 function museumPreview(){
