@@ -1100,3 +1100,29 @@ body.museum-host .presentation>.success-scene.naomi-scene>p{text-shadow:0 2px 6p
 .presentation>.candle-ending .flame{font-size:clamp(44px,9vh,85px)!important;line-height:1.05;filter:drop-shadow(0 0 18px #ffc377)}
 .presentation>.candle-ending .candle-quote{font-size:clamp(28px,5vh,50px)!important;color:#ffe1a0!important;text-shadow:0 0 18px #e1a04a66}
 .presentation>.candle-ending>p{text-shadow:0 2px 8px #000!important;color:#fff7e5!important}
+
+/* Finale: full-bleed museum scene and a slow, single-run closing ceremony. */
+body.museum-host .presentation>.finale-cinematic{position:relative!important;isolation:isolate;width:100%!important;height:100%!important;max-width:none!important;min-height:0!important;box-sizing:border-box!important;display:grid!important;grid-template-columns:minmax(0,1fr)!important;grid-template-rows:auto minmax(0,1fr) auto!important;gap:0!important;padding:clamp(9px,1.5vh,16px) 18px!important;background:linear-gradient(180deg,#09121ccc 0%,#09121c2e 29%,#09121c28 56%,#09121ced 100%),url("scenes/room_1.png") center/cover no-repeat!important;overflow:hidden!important;zoom:1!important}
+body.museum-host .presentation>.finale-cinematic:before,body.museum-host .presentation>.finale-cinematic:after{display:none!important}
+.finale-cinematic>.finale-heading,.finale-cinematic>.finale-closing{z-index:2;position:relative;text-align:center}
+body.museum-host .finale-cinematic h2{font-size:clamp(25px,4.8vh,49px)!important;line-height:1.16!important;margin:3px 0!important;color:#fff5dc!important;text-shadow:0 2px 12px #000}
+.finale-heading p,.finale-closing>p:not(.finale-lastline){font-size:clamp(15px,2.5vh,25px);font-weight:600;margin:3px 0;color:#fff1d1;text-shadow:0 2px 8px #000}
+.finale-stage{min-height:0;width:100%;height:100%;display:flex;justify-content:center;align-items:center;overflow:hidden}
+.finale-door-art{width:100%;height:100%;max-height:100%;max-width:850px;display:block;filter:drop-shadow(0 12px 18px #0008)}
+.finale-cinematic .finale-lastline{font-size:clamp(22px,4.4vh,44px)!important;color:#ffe2a0!important;font-weight:900;margin:4px 0!important;text-shadow:0 2px 16px #000}
+.finale-links{display:flex;align-items:center;justify-content:center;gap:18px;font-size:clamp(12px,1.9vh,17px)}
+.finale-links a,.finale-replay{color:#ffe2a0!important;font:inherit;background:#0e1828b0;border:1px solid #bca16a;border-radius:20px;padding:4px 12px;text-decoration:none;cursor:pointer}
+.finale-door-left,.finale-door-right{transform-box:fill-box}
+.finale-door-left{transform-origin:left center}
+.finale-door-right{transform-origin:right center}
+.finale-walker{opacity:0;transform-box:fill-box;transform-origin:center bottom}
+.finale-light{opacity:0}
+.finale-playing .finale-door-left,.finale-playing .finale-door-right{animation:finale-door-motion 9s ease-in-out both}
+.finale-playing .finale-walker{animation:finale-walk-motion 9s ease-in-out both}
+.finale-playing .finale-light{animation:finale-light-motion 9s ease-in-out both}
+.finale-playing .finale-lastline{animation:finale-lastline-reveal 9s ease both}
+@keyframes finale-door-motion{0%,12%,100%{transform:scaleX(1)}38%,65%{transform:scaleX(.06)}88%{transform:scaleX(1)}}
+@keyframes finale-walk-motion{0%,32%{opacity:0;transform:translateY(0) scale(1)}40%{opacity:1;transform:translateY(0) scale(1)}62%{opacity:1;transform:translateY(-55px) scale(.38)}72%,100%{opacity:0;transform:translateY(-62px) scale(.2)}}
+@keyframes finale-light-motion{0%,12%,100%{opacity:0}40%,65%{opacity:1}88%{opacity:.12}}
+@keyframes finale-lastline-reveal{0%,78%{opacity:0;transform:translateY(5px)}100%{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.finale-playing .finale-door-left,.finale-playing .finale-door-right,.finale-playing .finale-walker,.finale-playing .finale-light,.finale-playing .finale-lastline{animation:none!important}}
