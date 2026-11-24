@@ -1028,3 +1028,14 @@ body.museum-host .presentation>.intro:has(>.answercloud)>p{font-size:clamp(16px,
 body.museum-host .presentation>.intro:has(>.answercloud) .answercloud{gap:5px!important}
 body.museum-host .presentation>.intro:has(>.answercloud) .answercloud span{font-size:clamp(13px,2vh,20px)!important;padding:5px 10px!important}
 }
+
+/* Handwritten exhibits: use the available projector width rather than shrinking paper. */
+@media(min-width:801px){
+body.museum-host .presentation>.cinematic-media:has(>.letter){box-sizing:border-box!important;width:100%!important;max-width:none!important;min-height:0!important;height:100%!important;padding:8px 18px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:5px!important}
+body.museum-host .presentation>.cinematic-media:has(>.letter)>h2{font-size:clamp(22px,3.5vh,36px)!important;line-height:1.15!important;margin:0!important}
+body.museum-host .presentation>.cinematic-media:has(>.letter)>.eyebrow{margin:0!important;font-size:15px!important}
+body.museum-host .presentation>.cinematic-media>.letter{box-sizing:border-box!important;width:min(95%,1100px)!important;max-width:none!important;margin:0 auto!important;padding:12px 36px!important;transform:none!important;box-shadow:none!important;text-shadow:none!important}
+body.museum-host .presentation>.cinematic-media>.letter p{font-size:clamp(17px,2.8vh,26px)!important;line-height:1.35!important;margin:5px 0!important;text-shadow:none!important}
+body.museum-host .presentation>.cinematic-media>.letter .wax-stamp{width:32px!important;height:32px!important;font-size:17px!important;margin:0 auto 3px!important}
+body.museum-host .presentation>.cinematic-media:has(>.letter)>.quote{font-size:clamp(14px,2.2vh,20px)!important;margin:0!important;padding:5px 12px!important;line-height:1.25!important}
+}
