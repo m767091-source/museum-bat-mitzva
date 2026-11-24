@@ -146,6 +146,10 @@ function fitMuseumSlide(){
  if(!document.body.classList.contains('museum-host'))return;
  const area=document.querySelector('.presentation'),slide=area?.firstElementChild;
  if(!area||!slide)return;
+ if(window.innerWidth>800 && (slide.classList.contains('cinematic-task') || slide.querySelector(':scope > .answercloud'))){
+ slide.style.zoom='1';slide.style.maxHeight='100%';slide.style.overflow='auto';
+ slide.dataset.fitRatio='1';slide.dataset.fitsViewport=String(slide.scrollHeight<=slide.clientHeight+2);return;
+ }
  // Museum door scenes already have a responsive full-viewport layout.
  // Measuring their historical min-height and zooming the entire panel makes
  // the projected image tiny, so keep these scenes at their natural 100% size.
