@@ -1243,3 +1243,14 @@ body.museum-host .presentation>.values-review>p{font-size:clamp(14px,2.2vh,22px)
 .review-card.revealed{background:#1b3e4a;border-color:#f0d29a;cursor:default}
 .review-card.revealed .review-reason{color:#fff6e7}
 @media(max-width:600px){.review-cards{gap:4px}.review-card{padding:5px}.review-card-top{font-size:13px;gap:3px}.review-card-top strong{font-size:12px}.review-reason{font-size:11px;min-height:4.2em}.review-card:last-child{width:100%}}
+
+/* Courage dilemmas: clear, readable decisions and a shared takeaway. */
+.courage-task .option{white-space:normal;text-align:right;line-height:1.5;padding:12px 14px}
+.courage-task .treasure-clue{font-size:clamp(18px,4.5vw,24px);line-height:1.5}
+.courage-lessons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(5px,1vh,12px);width:min(100%,1100px);position:relative;z-index:2}
+.courage-lessons>div{display:flex;flex-direction:column;text-align:right;gap:3px;background:#102635ee;border:1px solid #c7a96e;border-radius:12px;padding:clamp(6px,1.1vh,13px);line-height:1.3}
+.courage-lessons>div:last-child{grid-column:1/-1;width:calc(50% - 5px);justify-self:center;box-sizing:border-box}
+.courage-lessons b{color:#ffe1a0;font-size:clamp(14px,2.4vh,24px)}
+.courage-lessons span{font-size:clamp(13px,2.15vh,21px);color:#fff5e2}
+.courage-message{color:#ffe1a0;font-size:clamp(16px,2.8vh,28px);font-weight:800;text-align:center;line-height:1.3}
+@media(max-width:600px){.courage-lessons{gap:4px}.courage-lessons>div{padding:5px}.courage-lessons b{font-size:12px}.courage-lessons span{font-size:11px}.courage-lessons>div:last-child{width:100%}.courage-message{font-size:14px}}
