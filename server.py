@@ -84,7 +84,7 @@ async def patch(req):
             if path != 'step':return error('פעולה לא מורשית',403)
             code_input = val.get('code') if isinstance(val,dict) else None
             target = val.get('step') if isinstance(val,dict) else val
-            if type(target)!=int or not 0<=target<=31:return error('שלב לא תקין',400)
+            if type(target)!=int or not 0<=target<=32:return error('שלב לא תקין',400)
             # Do not let a teacher's Next button accidentally skip the final puzzle.
             if target>=28 and r['step']<=27 and not r.get('vaultOpen',False):
                 if code_input!='147':return error('יש לפענח את קוד הכספת תחילה',403)
@@ -134,7 +134,7 @@ async def restore(req):
     r=backup_data.get('data')
     if not re.fullmatch(r'[0-9]{4}',code) or not isinstance(r,dict):return error('קובץ גיבוי לא תקין')
     if not all(k in r for k in ('secret','playerSecrets','participants','responses','step','vaultOpen')):return error('קובץ גיבוי חסר נתונים')
-    if not isinstance(r['secret'],str) or len(r['secret'])<24 or not isinstance(r['participants'],dict) or not isinstance(r['playerSecrets'],dict) or not isinstance(r['responses'],dict) or type(r['step'])!=int or not 0<=r['step']<=31 or type(r['vaultOpen'])!=bool:return error('קובץ גיבוי לא תקין')
+    if not isinstance(r['secret'],str) or len(r['secret'])<24 or not isinstance(r['participants'],dict) or not isinstance(r['playerSecrets'],dict) or not isinstance(r['responses'],dict) or type(r['step'])!=int or not 0<=r['step']<=32 or type(r['vaultOpen'])!=bool:return error('קובץ גיבוי לא תקין')
     if len(r['participants'])>MAX_PLAYERS or set(r['participants'])!=set(r['playerSecrets']):return error('נתוני המשתתפות אינם תקינים')
     # A restored room must respect the same classroom limits as new joins.
     team_counts={i:0 for i in range(1,8)}
