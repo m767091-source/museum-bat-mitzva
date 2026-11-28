@@ -1217,3 +1217,15 @@ body.museum-host .values-discussion .tile b{font-size:clamp(13px,2.3vh,23px)!imp
 .discussion-grid span{font-size:clamp(14px,2.4vh,24px);font-weight:600}
 .discussion-close{color:#ffdfa0!important;font-weight:700}
 @media(max-width:600px){.golda-timeline{grid-template-columns:1fr;gap:4px}.timeline-event{font-size:14px;padding:4px 8px}.discussion-grid{gap:4px}.discussion-grid span{font-size:12px}.discussion-grid b{font-size:11px}.discussion-heading span{font-size:10px}.discussion-heading h3{font-size:16px}.discussion-grid>div{padding:5px}.value-count{font-size:18px}}
+
+/* Closing reflection: a dedicated calm moment before the candle ceremony. */
+body.museum-host .presentation>.closing-circle{justify-content:center!important;gap:clamp(5px,1vh,12px)!important;padding:clamp(10px,2vh,25px)!important}
+body.museum-host .closing-circle h2{font-size:clamp(25px,5vh,49px)!important;color:#ffe5ad;line-height:1.15}
+.circle-emblem{color:#f3ce89;font-size:clamp(24px,5vh,52px);line-height:1;text-shadow:0 0 24px #e8b86d80}
+.circle-questions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(6px,1.4vh,16px);width:min(100%,1100px);position:relative;z-index:2}
+.circle-questions>div{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(6px,1.4vh,14px);padding:clamp(10px,2.5vh,26px);border:1px solid #c9ad76;border-radius:18px;background:#102635ed;color:#fff5e1;line-height:1.4;min-width:0}
+.circle-questions b{display:grid;place-items:center;width:clamp(28px,4.5vh,45px);aspect-ratio:1;border-radius:50%;color:#183747;background:#e5c58a;font-size:clamp(13px,2vh,20px)}
+.circle-questions span{font-size:clamp(16px,3.2vh,31px);font-weight:700}
+.circle-invitation{font-size:clamp(14px,2.4vh,23px);color:#ffe0a0;font-weight:600;line-height:1.4}
+body.museum-host .presentation>.closing-circle .circle-footnote{font-size:clamp(11px,1.7vh,16px)!important;color:#efdfc1!important}
+@media(max-width:600px){.circle-questions{grid-template-columns:1fr;gap:5px}.circle-questions>div{flex-direction:row;padding:6px 9px;justify-content:flex-start;text-align:right}.circle-questions span{font-size:14px}.circle-invitation{font-size:12px}}
