@@ -1229,3 +1229,17 @@ body.museum-host .closing-circle h2{font-size:clamp(25px,5vh,49px)!important;col
 .circle-invitation{font-size:clamp(14px,2.4vh,23px);color:#ffe0a0;font-weight:600;line-height:1.4}
 body.museum-host .presentation>.closing-circle .circle-footnote{font-size:clamp(11px,1.7vh,16px)!important;color:#efdfc1!important}
 @media(max-width:600px){.circle-questions{grid-template-columns:1fr;gap:5px}.circle-questions>div{flex-direction:row;padding:6px 9px;justify-content:flex-start;text-align:right}.circle-questions span{font-size:14px}.circle-invitation{font-size:12px}}
+
+/* Interactive review of the five women, immediately before choosing values. */
+body.museum-host .presentation>.values-review{justify-content:center!important;gap:clamp(5px,1vh,12px)!important;padding:clamp(8px,1.8vh,20px)!important}
+body.museum-host .values-review h2{font-size:clamp(24px,4.4vh,44px)!important;color:#ffe3a8}
+body.museum-host .presentation>.values-review>p{font-size:clamp(14px,2.2vh,22px)!important;line-height:1.3;margin:0!important}
+.review-cards{width:min(100%,1100px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(5px,1vh,10px);position:relative;z-index:2}
+.review-card{font-family:inherit;display:flex;flex-direction:column;gap:4px;align-items:stretch;text-align:right;color:#fff2dc;background:#102635ee;border:1px solid #c7a96e;border-radius:13px;padding:clamp(6px,1.1vh,12px);cursor:pointer;min-width:0}
+.review-card:last-child{grid-column:1/-1;width:calc(50% - 5px);justify-self:center}
+.review-card-top{display:flex;gap:7px;align-items:center;flex-wrap:wrap;font-size:clamp(15px,2.4vh,24px);line-height:1.2}
+.review-card-top strong{margin-inline-start:auto;color:#ffe0a0;font-size:clamp(13px,2.1vh,20px)}
+.review-reason{display:block;min-height:3.8em;line-height:1.3;font-size:clamp(13px,2vh,20px);font-weight:500;color:#e7d2a6}
+.review-card.revealed{background:#1b3e4a;border-color:#f0d29a;cursor:default}
+.review-card.revealed .review-reason{color:#fff6e7}
+@media(max-width:600px){.review-cards{gap:4px}.review-card{padding:5px}.review-card-top{font-size:13px;gap:3px}.review-card-top strong{font-size:12px}.review-reason{font-size:11px;min-height:4.2em}.review-card:last-child{width:100%}}
